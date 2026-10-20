@@ -1,0 +1,1411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Mustang Momentum: an interactive accessibility practice for Mercer County Community College faculty. Eight challenges, real course decisions and a personal action plan.">
+<title>Mustang Momentum | MercerOnline</title>
+<link rel="icon" href="assets/maverick.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#056331;--forest:#0b4a26;--deep:#153029;--night:#0f231d;
+  --gold:#EBA904;--gold-2:#f6c94c;--gold-soft:#fff3d1;--gold-ink:#7c4a00;
+  --paper:#f5f4ee;--card:#ffffff;--ink:#16211c;--muted:#4f5d55;--line:#dcdfd6;
+  --mint:#e6f0e8;--rust:#b3261e;--rust-soft:#fbeae8;--focus:#1a4fd6;
+  --display:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --r:18px;--shadow:0 1px 2px #15302914,0 12px 32px #1530291a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-.01em;margin:0 0 .5em}
+h1{font-size:clamp(28px,3.6vw,44px);font-weight:800}
+h2{font-size:clamp(21px,2.2vw,27px);font-weight:800}
+h3{font-size:19px;font-weight:700}
+p{margin:0 0 1em}
+a{color:var(--green);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+.on-dark :focus-visible{outline-color:var(--gold-2)}
+h1:focus,h2:focus,[tabindex="-1"]:focus{outline:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-120px;background:#fff;color:var(--green);padding:12px 16px;z-index:50;font-weight:700;border-radius:8px}
+.skip:focus{top:10px}
+
+/* Buttons */
+button{font:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:10px 22px;border-radius:999px;border:2px solid var(--green);background:#fff;color:var(--green);font-family:var(--display);font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .15s,background .15s,box-shadow .15s}
+.btn:hover{background:var(--mint)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--green);color:#fff}
+.btn.primary:hover{background:var(--forest);box-shadow:0 6px 16px #05633140}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--deep)}
+.btn.gold:hover{background:var(--gold-2);border-color:var(--gold-2)}
+.btn.ghost{border-color:transparent;background:transparent}
+.btn.ghost:hover{background:var(--mint)}
+.btn.small{min-height:40px;padding:6px 16px;font-size:15px}
+.btn[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff}
+.btn svg{width:20px;height:20px;flex:none}
+.btn[disabled]{opacity:.55;cursor:default}
+
+/* Header */
+.site-header{background:#fff;border-bottom:1px solid var(--line);position:relative;z-index:5}
+.header-inner{max-width:1240px;margin:auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logos{display:flex;align-items:center;gap:20px;min-width:0}
+.logos img{display:block;height:auto}
+.logo-mercer{width:210px}
+.logo-online{width:96px}
+.logo-divider{width:1px;align-self:stretch;background:var(--line)}
+.site-nav{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.site-nav .btn{font-size:15px;min-height:44px;padding:8px 14px}
+
+/* Panels */
+.panel{max-width:1184px;margin:18px auto 0;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 28px;box-shadow:var(--shadow)}
+.panel[hidden]{display:none}
+.panel ul{padding-left:22px;margin:0 0 1em}
+.panel li{margin:.3em 0}
+.notice{max-width:1184px;margin:16px auto 0;background:var(--gold-soft);color:var(--gold-ink);border-radius:12px;padding:12px 20px;font-weight:700}
+.notice[hidden]{display:none}
+
+/* Trail bar */
+.trailbar{background:var(--deep);color:#fff;position:relative;overflow:hidden}
+.trailbar::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,#ffffff06 0 14px,transparent 14px 40px);pointer-events:none}
+.trail-inner{max-width:1240px;margin:auto;padding:16px 28px 18px;display:flex;align-items:center;gap:26px;position:relative}
+.trail-label{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-2);white-space:nowrap;line-height:1.3}
+.trail-label span{display:block;color:#fff;font-size:22px;letter-spacing:0;text-transform:none}
+.trail{list-style:none;margin:0;padding:0;flex:1;display:grid;grid-template-columns:repeat(8,1fr);position:relative}
+.trail::before{content:"";position:absolute;left:calc(100%/16);right:calc(100%/16);top:21px;height:4px;background:#ffffff26;border-radius:4px}
+.trail-fill{position:absolute;left:calc(100%/16);top:21px;height:4px;background:var(--gold);border-radius:4px;transition:width .6s ease}
+.trail li{display:flex;justify-content:center;position:relative}
+.trail button{background:none;border:0;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 4px;font:inherit;border-radius:10px}
+.node{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--night);border:3px solid #ffffff55;position:relative;transition:transform .2s}
+.node svg{width:22px;height:22px}
+.trail button:hover .node{transform:scale(1.08);border-color:var(--gold-2)}
+.trail .done .node{background:var(--gold);border-color:var(--gold);color:var(--deep)}
+.trail .current .node{border-color:#fff;box-shadow:0 0 0 5px #ffffff2e}
+.node .check{position:absolute;right:-5px;bottom:-4px;width:20px;height:20px;border-radius:50%;background:#fff;color:var(--green);display:grid;place-items:center;border:2px solid var(--deep)}
+.node .check svg{width:12px;height:12px}
+.node-name{font-size:13px;line-height:1.2;text-align:center;color:#e3ece6;max-width:110px}
+.trail .current .node-name{color:#fff;font-weight:700}
+.trail-mav{position:absolute;top:-14px;width:40px;left:50%;transform:translateX(4px);pointer-events:none;filter:drop-shadow(0 2px 3px #0006)}
+
+/* Stage */
+main{display:block}
+.stage{max-width:1240px;margin:28px auto 40px;padding:0 28px}
+.card{background:var(--card);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;border:1px solid #e3e5dd}
+.card-body{padding:36px 44px 40px}
+.eyebrow{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:0 0 10px}
+.lead{font-size:21px;line-height:1.55;max-width:820px}
+.muted{color:var(--muted)}
+.small{font-size:15px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.04em;padding:4px 11px;border-radius:999px;background:var(--mint);color:var(--forest);white-space:nowrap}
+.pill.gold{background:var(--gold-soft);color:var(--gold-ink)}
+.pill.dark{background:var(--deep);color:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.actions .spacer{flex:1}
+
+/* Welcome hero */
+.hero{background:radial-gradient(1200px 500px at 85% 20%,#0b4a26 0,transparent 60%),var(--deep);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 46px,#EBA90912 46px 52px);pointer-events:none}
+.hero-inner{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:28px;align-items:center;padding:52px 52px 0}
+.hero .eyebrow{color:var(--gold-2)}
+.hero h1{font-size:clamp(46px,7vw,92px);font-weight:900;line-height:.92;letter-spacing:-.035em;margin:0 0 20px;text-transform:uppercase}
+.hero h1 .gold{color:var(--gold)}
+.hero .tagline{font-family:var(--display);font-weight:700;font-size:clamp(18px,2vw,24px);color:#e7efe9;margin-bottom:26px}
+.hero .lead{color:#dfe9e2;font-size:19px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 52px}
+.hero-actions .btn:not(.gold){background:transparent;color:#fff;border-color:#ffffffaa}
+.hero-actions .btn:not(.gold):hover{background:#ffffff1a}
+.hero-art{position:relative;align-self:end;display:flex;flex-direction:column;align-items:center}
+.hero-art img{width:min(360px,100%);display:block;filter:drop-shadow(0 18px 24px #0007);animation:trot 3.2s ease-in-out infinite}
+@keyframes trot{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(-1.5deg)}}
+.bubble{position:relative;align-self:flex-start;margin:0 0 -6px;background:#fff;color:var(--deep);border-radius:18px;padding:14px 18px;font-family:var(--display);font-weight:700;font-size:16px;line-height:1.35;max-width:220px;box-shadow:0 10px 24px #0005}
+.bubble::after{content:"";position:absolute;right:28px;bottom:-12px;border:12px solid transparent;border-top-color:#fff;border-bottom:0}
+.speedlines{position:absolute;left:-40px;bottom:60px;width:160px;opacity:.6}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--night);position:relative}
+.fact{padding:20px 28px;border-right:1px solid #ffffff1a;color:#cfdcd3;font-size:15px}
+.fact:last-child{border-right:0}
+.fact strong{display:block;font-family:var(--display);font-size:26px;font-weight:900;color:var(--gold);line-height:1.1}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:6px}
+.why{border-radius:16px;padding:22px;background:var(--paper);border:1px solid var(--line)}
+.why .num{font-family:var(--display);font-weight:900;font-size:40px;color:var(--gold);line-height:1;margin-bottom:6px;-webkit-text-stroke:1px var(--gold-ink)}
+.why p{margin:0;font-size:16px}
+.how{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+
+/* Map */
+.map-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:center;margin-bottom:28px}
+.stats{display:flex;gap:14px;flex-wrap:wrap}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 18px;display:flex;align-items:center;gap:14px;min-width:150px}
+.stat strong{display:block;font-family:var(--display);font-size:24px;font-weight:900;line-height:1.1;color:var(--deep)}
+.stat span{font-size:14px;color:var(--muted)}
+.ring{width:54px;height:54px;flex:none}
+.ring circle{fill:none;stroke-width:7}
+.ring .bg{stroke:#e2e6dd}
+.ring .fg{stroke:var(--green);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .8s ease}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;list-style:none;margin:0;padding:0}
+.ch-card{position:relative;border:1px solid var(--line);border-radius:18px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:10px;background:#fff;transition:transform .2s,box-shadow .2s;height:100%}
+.ch-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ch-card.is-done{background:linear-gradient(180deg,#fffaf0,#fff)}
+.ch-card .tile{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--mint);color:var(--green)}
+.ch-card.is-done .tile{background:var(--gold);color:var(--deep)}
+.ch-card .tile svg{width:28px;height:28px}
+.ch-card h2{margin:0;font-size:18px;font-weight:700}
+.ch-card p{margin:0;font-size:15px;color:var(--muted);flex:1}
+.ch-card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.ch-card .num{font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.ch-card .btn{align-self:flex-start;margin-top:4px}
+.map-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:28px;padding:20px 24px;border-radius:18px;background:var(--deep);color:#fff}
+.map-foot p{margin:0}
+.map-foot .btn:not(.gold){background:transparent;color:#fff;border-color:#ffffffaa}
+
+/* Challenge head */
+.ch-head{background:linear-gradient(120deg,var(--deep) 0,var(--forest) 100%);color:#fff;padding:26px 44px 0;position:relative;overflow:hidden}
+.ch-head::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;border:34px solid #EBA9041c}
+.ch-head-row{display:flex;gap:18px;align-items:center;position:relative}
+.ch-icon{width:58px;height:58px;border-radius:16px;background:var(--gold);color:var(--deep);display:grid;place-items:center;flex:none}
+.ch-icon svg{width:32px;height:32px}
+.ch-head .eyebrow{color:var(--gold-2);margin-bottom:4px}
+.ch-head h1{margin:0;color:#fff;font-size:clamp(26px,3.2vw,40px)}
+.steps{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:6px;position:relative}
+.steps li{font-size:13px;color:#cfdcd3;padding:10px 4px 12px;border-top:4px solid #ffffff2a;line-height:1.25}
+.steps li.seen{border-top-color:var(--gold);color:#fff}
+.steps li[aria-current="step"]{border-top-color:#fff;color:#fff;font-weight:700}
+.steps .k{display:block;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+
+/* Mock artifacts */
+.artifact{margin:26px 0 8px;border-radius:16px;background:#e9ebe4;padding:26px;position:relative}
+.artifact-label{position:absolute;top:-12px;left:20px;background:var(--deep);color:#fff;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.paper{background:#fff;max-width:640px;margin:auto;padding:30px 36px;box-shadow:0 2px 4px #0001,0 14px 30px #0002;border-radius:4px;font-family:Calibri,Carlito,"Segoe UI",sans-serif;font-size:15px;line-height:1.5;color:#222}
+.paper .big{font-size:24px;font-weight:700;margin:0 0 6px}
+.paper .lbl{font-size:18px;font-weight:700;margin:16px 0 4px}
+.paper p{margin:0 0 6px}
+.paper .stylebox{float:right;font-family:var(--body);font-size:12px;background:#f0f0f0;border:1px solid #ccc;border-radius:4px;padding:2px 8px;color:#444}
+.browser{background:#fff;max-width:700px;margin:auto;border-radius:12px;overflow:hidden;box-shadow:0 14px 30px #0002}
+.browser-bar{background:#f0f1ec;padding:9px 14px;display:flex;gap:7px;align-items:center;border-bottom:1px solid #ddd}
+.browser-bar i{width:11px;height:11px;border-radius:50%;background:#d4d6cf;display:block}
+.browser-bar span{margin-left:12px;font-size:12.5px;color:#555;background:#fff;border-radius:6px;padding:2px 12px;flex:1}
+.browser-body{padding:22px 26px;font-size:16px}
+.browser-body .mock-h{font-family:var(--display);font-weight:700;font-size:18px;margin:0 0 8px}
+.fake-link{color:#1a4fd6;text-decoration:underline}
+.video{background:#0b1210;border-radius:14px;max-width:700px;margin:auto;aspect-ratio:16/9;position:relative;overflow:hidden;color:#fff;display:flex;align-items:flex-end;justify-content:center}
+.video .scene{position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,#2b4a3c,#0b1210 70%)}
+.video .scene svg{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:38%;opacity:.9}
+.video .cap{position:relative;margin-bottom:46px;background:#000c;padding:6px 14px;border-radius:4px;font-size:18px}
+.video .cap mark{background:#b3261e;color:#fff;padding:0 4px;border-radius:3px}
+.video .ctrl{position:absolute;left:0;right:0;bottom:0;height:36px;background:linear-gradient(transparent,#000a);display:flex;align-items:center;gap:12px;padding:0 14px;font-size:13px}
+.video .bar{flex:1;height:4px;background:#ffffff44;border-radius:4px;position:relative}
+.video .bar::after{content:"";position:absolute;left:0;top:0;bottom:0;width:38%;background:var(--gold);border-radius:4px}
+.video .ccbadge{border:1.5px solid #fff;border-radius:3px;padding:0 4px;font-weight:700;font-size:11px}
+.slide{background:#fff;max-width:640px;margin:auto;aspect-ratio:16/9;border-radius:6px;box-shadow:0 14px 30px #0002;position:relative;padding:5% 6%;font-family:Calibri,Carlito,"Segoe UI",sans-serif;color:#222;overflow:hidden}
+.slide .s-title{font-size:clamp(16px,2.6vw,26px);font-weight:700;margin:0 0 4%;color:var(--deep)}
+.slide ul{margin:0;padding-left:20px;font-size:clamp(12px,1.6vw,16px);width:52%}
+.slide .s-img{position:absolute;right:6%;top:30%;width:34%;aspect-ratio:1;border-radius:10px;background:radial-gradient(circle at 40% 40%,#9fd2a6,#056331);display:grid;place-items:center}
+.slide .s-img svg{width:56%}
+.slide .s-foot{position:absolute;left:6%;bottom:5%;font-size:12px;color:#666}
+.slide .ord{position:absolute;width:28px;height:28px;border-radius:50%;background:var(--rust);color:#fff;font:800 14px/28px var(--display);text-align:center;box-shadow:0 2px 6px #0004;transition:all .3s}
+.slide.fixed .ord{background:var(--green)}
+.scan{background:#efece2;max-width:560px;margin:auto;padding:30px 34px;box-shadow:0 14px 30px #0003;transform:rotate(-1.2deg);position:relative;filter:blur(.35px) contrast(.92);font-family:"Times New Roman",Times,serif;color:#3a3a36;font-size:15px;line-height:1.45;transition:all .4s}
+.scan::before{content:"";position:absolute;inset:0;background:radial-gradient(#0000000d 1px,transparent 1px) 0 0/5px 5px,linear-gradient(90deg,#0001,transparent 8%,transparent 92%,#0002);pointer-events:none}
+.scan.digital{transform:none;filter:none;background:#fff;font-family:Georgia,serif;color:#222}
+.scan.digital::before{display:none}
+.scan h4{font-size:19px;margin:0 0 4px}
+.scan p{margin:0 0 8px;text-align:justify}
+.scan .stamp{position:absolute;right:14px;top:10px;font:700 11px var(--display);letter-spacing:.1em;color:#9a2a20;border:2px solid #9a2a20;padding:2px 8px;border-radius:4px;transform:rotate(6deg);background:#fff}
+.scan.digital .stamp{color:var(--green);border-color:var(--green)}
+
+.task{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #eee}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.dot.d-req{background:#d0342c}.dot.d-opt{background:#2e9d4f}
+.task .tlabel{display:none;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;border:1.5px solid currentColor}
+.labels-on .task .tlabel{display:inline-block}
+.labels-on .tlabel.d-req{color:#a01d16}.labels-on .tlabel.d-opt{color:#1e6b36}
+.grayscale{filter:grayscale(1)}
+.pale{color:#EBA904}
+.mock-table{border-collapse:collapse;width:100%;font-size:15px;margin-top:12px}
+.mock-table td{border:1px solid #ccc;padding:6px 10px}
+.mock-table tr:first-child td{font-weight:700;background:#f3f3f3}
+
+/* Console */
+.demo{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;margin:22px 0 6px;align-items:start}
+.console{background:var(--night);color:#d9e8de;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);min-height:100%}
+.console-bar{display:flex;align-items:center;gap:10px;background:#0a1914;padding:10px 16px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-2)}
+.console-bar svg{width:18px;height:18px}
+.console-body{padding:16px 18px;font-family:var(--mono);font-size:15px;line-height:1.6}
+.console-body ol,.console-body ul{margin:0;padding-left:24px}
+.console-body li{margin:4px 0}
+.console-body .say{color:#fff}
+.console-body .say::before{content:"🔊 ";}
+.console-body .meh{color:#ffb4ab}
+.console-body .ok{color:#a8e2b5}
+.console-body button.jump{background:none;border:0;color:#fff;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:2px 0;text-align:left}
+.console-body .empty{color:#ffb4ab;font-style:italic}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0;align-items:center}
+.toolbar .label{font-family:var(--display);font-weight:700;font-size:14px;color:var(--muted);margin-right:4px}
+.demo-intro{display:flex;gap:14px;align-items:flex-start;background:var(--gold-soft);border-radius:14px;padding:14px 18px;color:#3d2a00}
+.demo-intro svg{width:24px;height:24px;flex:none;margin-top:3px;color:var(--gold-ink)}
+.demo-intro p{margin:0}
+.hl{animation:flash 1.4s ease}
+@keyframes flash{0%{background:var(--gold-2)}100%{background:transparent}}
+.htag{display:none;font:800 10px var(--display);background:var(--green);color:#fff;border-radius:4px;padding:2px 6px;margin-right:8px;vertical-align:3px;letter-spacing:.05em}
+.styled .htag{display:inline-block}
+.caplist{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.capline{display:grid;grid-template-columns:56px 1fr 1fr;gap:12px;align-items:center;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 14px;font:inherit;font-size:15.5px;cursor:pointer;color:var(--ink)}
+.capline:hover{border-color:var(--green)}
+.capline .t{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.capline .heard{color:var(--muted)}
+.capline.found{border-color:var(--rust);background:var(--rust-soft)}
+.capline.fixed{border-color:var(--green);background:var(--mint)}
+.cap-head{display:grid;grid-template-columns:56px 1fr 1fr;gap:12px;padding:0 16px 6px;font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.swatches{display:flex;flex-wrap:wrap;gap:10px;border:0;padding:0;margin:0}
+.swatches legend{font-family:var(--display);font-weight:700;font-size:15px;margin-bottom:8px}
+.swatch{display:flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:999px;padding:6px 14px 6px 8px;cursor:pointer;font-size:15px;background:#fff}
+.swatch:has(input:checked){border-color:var(--deep);background:var(--mint)}
+.swatch input{position:absolute;opacity:0;width:1px;height:1px}
+.swatch:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
+.swatch i{width:22px;height:22px;border-radius:50%;display:block;border:1px solid #0002}
+.contrast-out{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px}
+.contrast-out .ratio{font-family:var(--display);font-weight:900;font-size:40px;line-height:1}
+.contrast-sample{font-size:18px;margin:0}
+.verdict{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:800;font-size:14px;padding:4px 12px;border-radius:999px}
+.verdict.pass{background:var(--mint);color:var(--forest)}
+.verdict.fail{background:var(--rust-soft);color:var(--rust)}
+.verdict svg{width:16px;height:16px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.chips{display:flex;flex-direction:column;gap:10px}
+.chip{background:var(--deep);color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;cursor:grab;user-select:none}
+.drop{border:2px dashed #9aa39d;border-radius:10px;padding:10px 14px;min-height:50px;font-size:15px;background:#fff}
+.drop.over{border-color:var(--green);background:var(--mint)}
+.drop .placed{display:inline-block;margin-top:6px;background:var(--deep);color:#fff;border-radius:6px;padding:2px 10px;font-weight:700;font-size:14px}
+.match-a{display:grid;gap:12px}
+.match-a label{display:block;font-size:15px;margin-bottom:4px}
+.match-a select{font:inherit;font-size:16px;padding:8px 10px;border-radius:8px;border:2px solid #758379;min-width:200px;background:#fff}
+
+/* Questions */
+.prompt{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.1vw,25px);line-height:1.3;margin:6px 0 4px;max-width:860px}
+.options{border:0;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.options legend{padding:0;margin-bottom:8px}
+.opt{display:grid;grid-template-columns:auto auto 1fr;gap:14px;align-items:center;padding:16px 18px;border:2px solid var(--line);border-radius:16px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s,transform .15s}
+.opt:hover{border-color:var(--green);transform:translateX(2px)}
+.opt input{width:22px;height:22px;margin:0;accent-color:var(--green)}
+.opt .letter{width:36px;height:36px;border-radius:10px;background:var(--paper);display:grid;place-items:center;font-family:var(--display);font-weight:900;color:var(--deep);border:1px solid var(--line)}
+.opt:has(input:checked){border-color:var(--green);background:var(--mint)}
+.opt:has(input:checked) .letter{background:var(--green);color:#fff;border-color:var(--green)}
+.opt:has(input:disabled){cursor:default;transform:none}
+.opt.is-key{border-color:var(--green)}
+.opt.is-wrong{border-color:var(--rust);background:var(--rust-soft)}
+.opt .mark{grid-column:3;font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.opt.is-key .mark{color:var(--forest)}
+.opt.is-wrong .mark{color:var(--rust)}
+.error{color:var(--rust);font-weight:700;margin:12px 0 0}
+.error[hidden]{display:none}
+.check-row{margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.fb{margin-top:22px;border-radius:18px;padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.fb.good{background:var(--mint);border:2px solid #b7d6bf}
+.fb.bad{background:var(--gold-soft);border:2px solid #f0d488}
+.fb-icon{width:52px;height:52px;border-radius:50%;display:grid;place-items:center}
+.fb.good .fb-icon{background:var(--green);color:#fff}
+.fb.bad .fb-icon{background:var(--gold);color:var(--deep)}
+.fb-icon svg{width:28px;height:28px}
+.fb h2{font-size:22px;margin:4px 0 6px}
+.fb p{margin:0 0 8px}
+.fb .pts{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+details.why-all{margin-top:14px;background:#ffffffa6;border-radius:12px;padding:4px 16px}
+details.why-all summary{cursor:pointer;font-family:var(--display);font-weight:700;padding:10px 0;min-height:44px;display:flex;align-items:center}
+details.why-all ul{list-style:none;padding:0;margin:0 0 12px}
+details.why-all li{padding:10px 0;border-top:1px solid #0000001a;font-size:16px}
+details.why-all li strong{font-family:var(--display);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-right:6px}
+
+/* Practice */
+.practice{margin-top:28px;border-top:1px dashed var(--line);padding-top:24px}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;border:0;padding:0;margin:14px 0}
+.checks legend{font-family:var(--display);font-weight:700;font-size:19px;margin-bottom:10px;padding:0}
+.chk{display:flex;gap:12px;align-items:flex-start;border:2px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;font-size:16px}
+.chk input{width:22px;height:22px;margin:2px 0 0;flex:none;accent-color:var(--green)}
+.chk:has(input:checked){border-color:var(--green);background:var(--mint)}
+.pfb{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px}
+.pfb li{border-radius:12px;padding:12px 16px;font-size:16px;background:var(--paper);border-left:5px solid var(--muted)}
+.pfb li.right{border-left-color:var(--green)}
+.pfb li.miss{border-left-color:var(--gold)}
+.pfb strong{font-family:var(--display)}
+
+/* Tip & workflow */
+.tip{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:end;margin:8px 0 30px}
+.tip img{width:150px;display:block}
+.tip-bubble{background:var(--deep);color:#fff;border-radius:22px 22px 22px 6px;padding:24px 28px;position:relative}
+.tip-bubble .eyebrow{color:var(--gold-2)}
+.tip-bubble p.q{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.3vw,27px);line-height:1.3;margin:0}
+.workflow{list-style:none;counter-reset:wf;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.workflow li{counter-increment:wf;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:46px 18px 18px;position:relative;font-size:16px}
+.workflow li::before{content:counter(wf);position:absolute;top:14px;left:18px;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font:900 15px/30px var(--display);text-align:center}
+.workflow li:not(:last-child)::after{content:"";position:absolute;top:28px;left:56px;right:-14px;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 6px,transparent 6px 11px)}
+.callout{display:flex;gap:14px;align-items:flex-start;margin-top:20px;border-radius:14px;padding:16px 20px;background:var(--gold-soft);color:#3d2a00}
+.callout svg{width:24px;height:24px;flex:none;color:var(--gold-ink);margin-top:2px}
+.callout p{margin:0}
+.callout strong{font-family:var(--display)}
+
+/* Done / badges */
+.done{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;position:relative}
+.badge{width:200px;position:relative;flex:none;text-align:center}
+.badge-disc{position:relative;width:200px;height:200px}
+.ribbon{display:inline-block;margin-top:-18px;position:relative;background:var(--deep);color:var(--gold-2);font:900 14px var(--display);letter-spacing:.12em;text-transform:uppercase;padding:8px 18px;border-radius:8px;box-shadow:0 6px 14px #15302940}
+.badge svg.b{width:100%;height:100%}
+.badge .icon{position:absolute;inset:0;display:grid;place-items:center;color:var(--deep)}
+.badge .icon svg{width:76px;height:76px}
+.badge.pop{animation:pop .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{0%{transform:scale(.4) rotate(-20deg);opacity:0}100%{transform:none;opacity:1}}
+.skills{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.skills li{display:flex;gap:10px;align-items:flex-start}
+.skills svg{width:22px;height:22px;flex:none;color:var(--green);margin-top:3px}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;top:-20px;width:10px;height:16px;border-radius:2px;opacity:.9;animation:fall 2.6s ease-in forwards}
+@keyframes fall{to{transform:translateY(520px) rotate(540deg);opacity:0}}
+.mini-badges{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
+.mini-badges li{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#ecefe7;color:#8b968e;border:3px dashed #c2c9bf}
+.mini-badges li.got{background:var(--gold);color:var(--deep);border:3px solid var(--gold-ink)}
+.mini-badges svg{width:26px;height:26px}
+
+/* Results */
+.results-top{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+.big-ring{width:200px;height:200px;position:relative}
+.big-ring svg{width:100%;height:100%}
+.big-ring circle{fill:none;stroke-width:16}
+.big-ring .bg{stroke:#e2e6dd}
+.big-ring .fg{stroke:var(--green);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%}
+.big-ring .val{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:900;font-size:50px;color:var(--deep);line-height:1}
+.big-ring .val small{display:block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+table.bars{width:100%;border-collapse:collapse;margin-top:26px}
+table.bars caption{text-align:left;font-family:var(--display);font-weight:800;font-size:20px;margin-bottom:10px}
+table.bars th,table.bars td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;font-size:16px;vertical-align:middle}
+table.bars thead th{font-family:var(--display);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+table.bars tbody th{font-weight:700;width:30%}
+.barcell{display:flex;align-items:center;gap:12px}
+.barcell .track{flex:1;height:14px;background:#e8ebe3;border-radius:999px;overflow:hidden;min-width:60px}
+.barcell .fill{display:block;height:100%;background:var(--green);border-radius:999px}
+.barcell .fill.mid{background:var(--gold)}
+.barcell .fill.low{background:#c97a3a}
+.barcell .v{font-family:var(--display);font-weight:800;min-width:64px;text-align:right}
+
+/* Forms */
+.field{display:block;font-family:var(--display);font-weight:700;margin:22px 0 8px}
+textarea,input[type=text],input[type=date]{font:inherit;width:100%;max-width:680px;border:2px solid #758379;padding:12px 14px;border-radius:12px;background:#fff;color:var(--ink)}
+textarea{min-height:120px}
+textarea:focus,input[type=text]:focus,input[type=date]:focus{border-color:var(--green)}
+.presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;border:0;padding:0;margin:16px 0 0}
+.presets legend{font-family:var(--display);font-weight:700;font-size:19px;margin-bottom:10px;padding:0}
+.presets label{display:flex;gap:10px;align-items:flex-start;border:2px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;font-size:16px}
+.presets input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--green);flex:none}
+.presets label:has(input:checked){border-color:var(--green);background:var(--mint)}
+
+/* Action plan certificate */
+.plan{border:3px solid var(--deep);border-radius:22px;padding:30px 34px;position:relative;background:linear-gradient(180deg,#fff, #fbfaf4);margin-top:20px;overflow:hidden}
+.plan::before{content:"";position:absolute;inset:8px;border:1.5px solid var(--gold);border-radius:16px;pointer-events:none}
+.plan-logos{display:flex;align-items:center;gap:20px;margin-bottom:20px;position:relative}
+.plan-logos img{height:auto}
+.plan-logos .m{width:200px}.plan-logos .o{width:72px}
+.plan-mav{position:absolute;right:22px;bottom:18px;width:110px;opacity:.95}
+.plan dl{margin:16px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;max-width:calc(100% - 120px)}
+.plan dt{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.plan dd{margin:0}
+.plan .commit{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.4vw,28px);color:var(--deep);line-height:1.3;white-space:pre-wrap;overflow-wrap:anywhere;max-width:calc(100% - 120px)}
+
+/* Finale */
+.finale{background:var(--deep);color:#fff;text-align:center;padding:56px 32px 0;position:relative;overflow:hidden}
+.finale::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 46px,#EBA90912 46px 52px)}
+.finale>*{position:relative}
+.finale .eyebrow{color:var(--gold-2)}
+.finale h1{font-size:clamp(36px,5vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+.finale p{color:#dfe9e2;max-width:640px;margin-left:auto;margin-right:auto}
+.finale img.mav{width:220px;display:block;margin:20px auto 0}
+.finale .actions{justify-content:center;border-top-color:#ffffff22}
+.finale .actions .btn:not(.gold){background:transparent;color:#fff;border-color:#ffffffaa}
+
+footer{max-width:1240px;margin:0 auto;padding:6px 28px 40px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px}
+footer .btn{font-size:14px;min-height:40px}
+.print-only{display:none}
+
+/* Responsive */
+@media (max-width:1060px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .workflow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .workflow li::after{display:none}
+  .node-name{display:none}
+  .trail::before,.trail-fill{top:21px}
+}
+@media (max-width:860px){
+  .header-inner{flex-wrap:wrap;padding:12px 18px}
+  .logo-mercer{width:170px}.logo-online{width:68px}
+  .stage{padding:0 14px;margin-top:18px}
+  .card-body{padding:26px 22px 30px}
+  .ch-head{padding:22px 22px 0}
+  .hero-inner{grid-template-columns:1fr;padding:36px 26px 0}
+  .hero-art{order:-1}
+  .hero-art img{width:180px}
+  .hero-art{flex-direction:row;align-items:flex-end;gap:12px}
+  .bubble{position:relative;align-self:flex-start;margin:0;font-size:14px;max-width:180px}
+  .bubble::after{left:-10px;right:auto;bottom:22px;border:10px solid transparent;border-right-color:#fff;border-left:0}
+  .hero-actions{margin-bottom:36px}
+  .facts{grid-template-columns:1fr}
+  .fact{border-right:0;border-bottom:1px solid #ffffff1a;padding:14px 26px}
+  .why-grid{grid-template-columns:1fr}
+  .map-top{grid-template-columns:1fr}
+  .demo{grid-template-columns:1fr}
+  .done,.results-top{grid-template-columns:1fr;gap:20px}
+  .big-ring{width:160px;height:160px}
+  .badge-disc{width:160px;height:160px}.badge{width:auto;text-align:left}
+  .trail-inner{padding:12px 14px 14px;gap:12px}
+  .trail-label{display:none}
+  .node{width:36px;height:36px}
+  .node svg{width:18px;height:18px}
+  .trail::before,.trail-fill{top:16px}
+  .trail-mav{width:30px;top:-10px}
+  .steps .t{display:none}
+  .steps li{padding:8px 2px 6px}
+  .checks,.presets{grid-template-columns:1fr}
+  .tip{grid-template-columns:1fr}
+  .tip img{width:110px}
+  .plan dl,.plan .commit{max-width:none}
+  .plan-mav{position:static;width:90px;margin-top:16px}
+  .capline,.cap-head{grid-template-columns:44px 1fr}
+  .capline .heard{grid-column:2;font-size:14px}
+  .capline .heard::before{content:"You said: "}
+  .cap-head .h{display:none}
+  .match{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  body{font-size:17px}
+  .grid,.workflow{grid-template-columns:1fr}
+  .site-nav{width:100%;justify-content:flex-start}
+  .site-nav .btn{padding:8px 10px}
+  .actions .btn{flex:1 1 auto}
+  .actions .spacer{display:none}
+  .paper,.scan{padding:20px}
+  .artifact{padding:18px 12px}
+  .trail{gap:0}
+  .node{width:30px;height:30px;border-width:2px}
+  .node svg{width:15px;height:15px}
+  .node .check{width:15px;height:15px;right:-4px}
+  .trail::before,.trail-fill{top:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .confetti{display:none}
+}
+@media print{
+  body{background:#fff;font-size:12pt}
+  .site-header,.trailbar,footer,.actions,.panel,.notice,.skip,.no-print,#status,.confetti{display:none!important}
+  .stage{margin:0;padding:0;max-width:none}
+  .card{box-shadow:none;border:0}
+  .card-body{padding:0}
+  .print-only{display:block}
+  .plan{break-inside:avoid}
+  @page{margin:.6in}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logos">
+      <img class="logo-mercer" src="assets/mercer-logo.png" width="700" height="132" alt="Mercer County Community College">
+      <span class="logo-divider" aria-hidden="true"></span>
+      <img class="logo-online" src="assets/merceronline-logo.png" width="560" height="363" alt="MercerOnline">
+    </div>
+    <nav class="site-nav" aria-label="Training">
+      <button class="btn ghost" type="button" id="navMap">Trail map</button>
+      <button class="btn ghost" type="button" id="helpToggle" aria-expanded="false" aria-controls="help">Help</button>
+      <button class="btn ghost" type="button" id="resourcesToggle" aria-expanded="false" aria-controls="resources">Resources</button>
+    </nav>
+  </div>
+</header>
+
+<section class="panel" id="help" hidden aria-labelledby="helpTitle" tabindex="-1">
+  <h2 id="helpTitle">Help</h2>
+  <ul>
+    <li>Use <strong>Tab</strong> to move between controls, <strong>Enter</strong> or <strong>Space</strong> to activate buttons, and the <strong>arrow keys</strong> to choose an answer.</li>
+    <li>There is no time limit. Take the challenges in any order and return to the Trail map at any time.</li>
+    <li>Your knowledge score records your <strong>first</strong> answer to each question. You can reread explanations as often as you like.</li>
+    <li>Progress and your action plan are saved in this browser only, when the browser allows it. Nothing is sent to Blackboard or to MercerOnline.</li>
+  </ul>
+  <button class="btn small" type="button" data-close="help">Close help</button>
+</section>
+
+<section class="panel" id="resources" hidden aria-labelledby="resourcesTitle" tabindex="-1">
+  <h2 id="resourcesTitle">Accessibility resources</h2>
+  <ul id="resourceList">
+    <li><a href="https://help.anthology.com/ally-lms/en/instructors.html">Ally for LMS: Instructor help</a></li>
+    <li><a href="https://help.anthology.com/ally-lms/en/instructors/improve-content-accessibility/scanned-pdfs.html">Ally: Scanned PDFs</a></li>
+    <li><a href="https://support.microsoft.com/topic/9c57ee44-bb48-40e3-aad4-7647fc1dba51">Microsoft: Make your Word documents accessible</a></li>
+    <li><a href="https://support.microsoft.com/en-us/office/make-your-powerpoint-presentations-accessible-to-people-with-disabilities-6f7772b2-2f33-4bd2-8ca7-dae3b2b3ef25">Microsoft: Make your PowerPoint presentations accessible</a></li>
+    <li><a href="https://webaim.org/techniques/alttext/">WebAIM: Alternative text</a></li>
+    <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM: Contrast checker</a></li>
+    <li><a href="https://www.w3.org/WAI/media/av/">W3C: Making audio and video media accessible</a></li>
+    <li><a href="https://www.w3.org/WAI/tutorials/">W3C: Web accessibility tutorials</a></li>
+  </ul>
+  <p id="supportLine">For Mercer-specific guidance, contact the MercerOnline team.</p>
+  <button class="btn small" type="button" data-close="resources">Close resources</button>
+</section>
+
+<div id="storageNotice" class="notice" role="status" hidden></div>
+
+<div class="trailbar on-dark" id="trailbar" hidden>
+  <nav class="trail-inner" aria-label="Challenge trail">
+    <p class="trail-label">Mustang Momentum <span id="trailCount">0 of 8 complete</span></p>
+    <ol class="trail" id="trail"></ol>
+  </nav>
+</div>
+
+<main id="main" tabindex="-1">
+  <div class="stage"><div class="card" id="view"></div></div>
+</main>
+
+<footer>
+  <span>MercerOnline · Building a culture of inclusive learning. Above All Else.</span>
+  <button class="btn ghost small" type="button" id="reset">Start a new attempt</button>
+</footer>
+
+<div class="sr-only" id="status" role="status" aria-live="polite" aria-atomic="true"></div>
+<noscript><p class="notice">Turn on JavaScript to use this interactive training.</p></noscript>
+
+<script>
+"use strict";
+/* ============================================================
+   CONFIGURATION: edit these for your college
+   ============================================================ */
+const CONFIG = {
+  supportUrl: "",            // e.g. a MercerOnline support page. Leave "" to show text only.
+  supportLabel: "MercerOnline support",
+  storageKey: "mercer.mustangMomentum.v2"
+};
+
+/* ---------- Icons (inline SVG strings) ---------- */
+const sv = (d, extra = "") => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" ${extra}>${d}</svg>`;
+const ICON = {
+  structure: sv('<path d="M4 5h9M4 10h16M8 15h12M8 20h12"/><path d="M4 15v5"/>'),
+  images: sv('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-10 9"/>'),
+  links: sv('<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1.1 1.1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1.1-1.1"/>'),
+  media: sv('<rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 10.2a2.2 2.2 0 1 0 0 3.6M16.5 10.2a2.2 2.2 0 1 0 0 3.6"/>'),
+  design: sv('<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/>'),
+  pdf: sv('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>'),
+  slides: sv('<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8M7 8h6M7 11h9"/>'),
+  keyboard: sv('<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/>'),
+  check: sv('<path d="M5 12.5l4.5 4.5L19 7.5"/>', 'stroke-width="3"'),
+  retry: sv('<path d="M12 8v5M12 16.5h.01"/><circle cx="12" cy="12" r="9"/>', 'stroke-width="2.6"'),
+  info: sv('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>'),
+  ear: sv('<path d="M6 9a6 6 0 1 1 12 0c0 3-2 4-3 5.5S14 18 12 19.5 8 20 8 17"/><path d="M10 9a2 2 0 1 1 4 0"/>'),
+  arrow: sv('<path d="M5 12h14M13 6l6 6-6 6"/>'),
+  back: sv('<path d="M19 12H5M11 6l-6 6 6 6"/>'),
+  map: sv('<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>'),
+  print: sv('<path d="M6 9V3h12v6M6 18H4v-7h16v7h-2"/><rect x="6" y="14" width="12" height="7"/>'),
+  copy: sv('<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>'),
+  x: sv('<path d="M6 6l12 12M18 6L6 18"/>', 'stroke-width="3"')
+};
+const MAV = "assets/maverick.svg";
+
+/* ---------- Content ---------- */
+const STEP_NAMES = ["The situation", "Your call", "Experience it", "Your call", "Fix it", "Badge"];
+
+const CH = [
+{
+  key: "structure", icon: "structure", title: "Structure the Trail", short: "Headings", badge: "Trailblazer",
+  desc: "Turn bold text into real headings that students can navigate.",
+  lead: "Professor Ortiz’s syllabus looks well organized: big, bold labels separate each section. A student who uses a screen reader opens it and asks, “Where’s the grading section? I just hear one long page.”",
+  artifact: () => `<div class="artifact"><span class="artifact-label">The syllabus</span><div class="paper">
+    <span class="stylebox">Style: Normal</span>
+    <p class="big">ENG 101 Syllabus</p><p>Composition I · Fall</p>
+    <p class="lbl">Course overview</p><p>This course develops academic writing through drafting, feedback and revision.</p>
+    <p class="lbl">Weekly work</p><p>Each week includes a reading, a discussion post and a writing task.</p>
+    <p class="lbl">Grading</p><p>Essays 60% · Discussions 25% · Reflections 15%</p></div></div>
+    <p class="small muted">Every line in this file uses the Normal style. The labels are just bold, 18-point text.</p>`,
+  q: [
+    { id: "c1q1", prompt: "What change will help this student find the sections fastest?", key: 2, opts: [
+      ["Make the labels even larger (24 pt) and give each one a color so they stand out.", "Size and color change how text looks, not what it is. A screen reader still announces plain paragraphs, so the student hears no sections."],
+      ["Upload it as a PDF. Ally will detect the large text and turn it into headings.", "Ally can flag missing headings, but it doesn’t add them to your file. Its alternative formats are built from the structure your document already has."],
+      ["Apply Word’s built-in Heading styles to the title and each label.", "Heading styles create real structure. Screen reader users can list the headings and jump straight to Grading, and Word’s Navigation Pane works for everyone."],
+      ["Type a table of contents at the top that lists each section in bold.", "A typed list isn’t connected to the sections, so it can’t jump anywhere. Word’s automatic table of contents only works once you use heading styles."]
+    ]},
+    { id: "c1q2", prompt: "The title uses Heading 1. “Weekly work” has two subsections, “Week 1” and “Week 2.” Which styles keep the outline accurate?", key: 0, opts: [
+      ["Weekly work: Heading 2. Week 1 and Week 2: Heading 3.", "Heading levels describe nesting, like an outline. Heading 3 tells students these weeks sit inside Weekly work."],
+      ["Weekly work: Heading 2. Week 1 and Week 2: also Heading 2, so every section is equal.", "Week 1 and Week 2 belong inside Weekly work. Giving them the same level hides that relationship."],
+      ["Weekly work: Heading 3. Week 1 and Week 2: Heading 5, because the smaller look fits the design.", "Choose levels by relationship, not appearance, and don’t skip levels. You can restyle any heading to look the way you want."],
+      ["All three: Heading 1, so screen readers announce each one as important.", "Several Heading 1s flatten the outline. Keep one Heading 1 for the document title."]
+    ]}
+  ],
+  demoTitle: "See what a screen reader finds",
+  tip: "Don’t just make it look like a heading. Make it a heading. Then restyle the heading if you want a different look.",
+  steps: ["In Word, select a label and pick a style from Home › Styles (Heading 1, Heading 2…).", "Open View › Navigation Pane to check that your outline makes sense.", "In Blackboard’s editor, use the paragraph-style menu for headings instead of bold text.", "Re-upload the file and review the Ally indicator for anything left to fix."],
+  note: "Ally flags missing headings in supported files, but it can’t tell whether your outline makes sense. That part is your call.",
+  skills: ["Use heading styles instead of manual formatting", "Choose heading levels by the outline, not by size", "Check structure with the Navigation Pane and Ally"]
+},
+{
+  key: "images", icon: "images", title: "Describe What Matters", short: "Images", badge: "Clear Describer",
+  desc: "Describe images by their purpose, not their appearance.",
+  lead: "Your Week 4 page has two images: a decorative swirl at the top and a bar chart students must interpret for the discussion. A screen reader user hears: “Image. swirl-final-v2.png. Image. chart1.png.”",
+  artifact: () => `<div class="artifact"><span class="artifact-label">Week 4 page</span><div class="browser"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>Blackboard · Week 4</span></div><div class="browser-body">
+    <svg viewBox="0 0 600 40" width="100%" height="34" aria-hidden="true"><path d="M0 20 C60 0 120 40 180 20 S300 0 360 20 S480 40 600 20" fill="none" stroke="#EBA904" stroke-width="5"/><path d="M0 26 C60 6 120 46 180 26 S300 6 360 26 S480 46 600 26" fill="none" stroke="#056331" stroke-width="3"/></svg>
+    <p class="mock-h">Week 4 Discussion: Participation trends</p><p>Use the chart to explain what changed and why.</p>${chartSvg()}</div></div></div>`,
+  q: [
+    { id: "c2q1", prompt: "What’s the best treatment for the decorative swirl?", key: 3, opts: [
+      ["Describe it: “Decorative green and gold swirl.”", "This is a common habit, but it makes screen reader users listen to something that carries no information. If an image adds nothing, let them skip it."],
+      ["Use the filename as alt text, since it’s short.", "Filenames are noise (“swirl dash final dash v2 dot png”) and never describe purpose."],
+      ["Add a visible caption under it that says it’s decorative.", "A caption adds clutter for everyone, and the image is still announced to screen reader users."],
+      ["Mark it as decorative so assistive technology skips it.", "Word, PowerPoint and Blackboard’s editor all let you mark an image as decorative. In HTML, that’s an empty alt attribute (alt=\"\")."]
+    ]},
+    { id: "c2q2", prompt: "Which alt text best serves the chart students must interpret?", key: 1, opts: [
+      ["Bar chart showing weekly participation data for the course.", "This names the topic but leaves out the trend students need for the discussion."],
+      ["Participation rose each week: 40% in Week 1, 70% in Week 2 and 90% in Week 3.", "This conveys what the chart shows. For complex charts, also put the data in a table or a longer description on the page."],
+      ["Three green bars of increasing height on a white background with gridlines.", "This describes appearance. Students need the information, not the colors and shapes."],
+      ["Chart. See the lecture video for an explanation.", "This sends students elsewhere, and the video may have its own barriers. Give the information where the image is."]
+    ]}
+  ],
+  demoTitle: "Hear the difference",
+  tip: "Ask: what does a student need to understand or do from this image? Write that, usually in a sentence or two.",
+  steps: ["In Word or PowerPoint, right-click an image and choose View Alt Text.", "Write the meaning, or check “Mark as decorative.”", "In Blackboard’s editor, add a description (or mark the image decorative) when you insert it.", "For complex charts, add a short alt text plus the full data in a table on the page."],
+  note: "Ally can tell you an image has no description. It can’t tell whether your description is meaningful.",
+  skills: ["Mark decorative images as decorative", "Write alt text that conveys meaning", "Pair complex charts with data or a longer description"]
+},
+{
+  key: "links", icon: "links", title: "Make Links Meaningful", short: "Links", badge: "Pathfinder",
+  desc: "Name the destination so students never have to guess.",
+  lead: "Your Week 3 announcement has three links, all labeled “click here.” Many screen reader users pull up a list of every link on a page to move quickly. Here’s what they get.",
+  artifact: () => `<div class="artifact"><span class="artifact-label">Week 3 announcement</span><div class="browser"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>Blackboard · Announcements</span></div><div class="browser-body">
+    <p class="mock-h">Week 3: Research essay</p><p>For the research guide, <span class="fake-link">click here</span>. For the rubric, <span class="fake-link">click here</span>. Ready to submit? <span class="fake-link">Click here</span>.</p></div></div></div>`,
+  q: [
+    { id: "c3q1", prompt: "Which link text works best for the research guide?", key: 2, opts: [
+      ["Click here", "Out of context, in a links list, it says nothing about the destination, and three identical links can’t be told apart."],
+      ["https://library.example.edu/guides/eng101-week3", "A screen reader reads a raw web address piece by piece. It’s long and rarely describes the purpose."],
+      ["Week 3 Research Guide", "Short, specific and meaningful on its own. It reads well in the sentence and in a links list."],
+      ["Read more", "Like “click here,” it doesn’t tell students what they’ll get."]
+    ]},
+    { id: "c3q2", prompt: "Your rubric is a PDF. How should its link read?", key: 0, opts: [
+      ["Essay Rubric (PDF)", "The name says what it is, and the file type says what will open. That helps students on phones and students using assistive technology."],
+      ["Rubric", "If the course has several rubrics, “Rubric” is ambiguous. Name the specific one."],
+      ["Download", "It says what happens, not what students will get."],
+      ["Essay Rubric — select this link to open it in a new window", "The extra instructions make the link long and repeat what a link already does. Name the resource and add the file type."]
+    ]}
+  ],
+  demoTitle: "Pull up the links list",
+  tip: "Write the destination, not the direction: “Week 3 Research Guide,” not “click here.”",
+  steps: ["In Blackboard’s editor, select the link text and rewrite it to name the destination.", "Add the file type for documents: (PDF), (Word), (PowerPoint).", "Give each link on a page a different name.", "Test every link before you publish."],
+  note: "Ally may flag some link issues in supported content. Reading your links out of context is the most reliable check.",
+  skills: ["Name the destination in link text", "Make each link unique on the page", "Add file types for documents"]
+},
+{
+  key: "media", icon: "media", title: "Make Media Reach Everyone", short: "Media", badge: "Signal Booster",
+  desc: "Check captions and describe what students need to see.",
+  lead: "You recorded a six-minute lab demo and turned on automatic captions. Two problems: one caption dropped the word “not,” and you set up the equipment silently for 40 seconds.",
+  artifact: () => `<div class="artifact"><span class="artifact-label">Your lab video</span>${videoMock("Do submit the practice file", true)}</div>`,
+  q: [
+    { id: "c4q1", prompt: "What should happen before you publish?", key: 3, opts: [
+      ["Publish now. Automatic captions are accurate enough for most lectures.", "Automatic captions often miss words, names and technical terms. One missing “not” reverses the instruction."],
+      ["Add a note asking students to report any caption errors they find.", "This shifts the work to the students most affected, and they may not know what was actually said."],
+      ["Turn captions off and post the slides as the alternative.", "Slides don’t contain everything you say, and they don’t replace captions synchronized with the video."],
+      ["Check the captions against the audio and correct words, names and timing.", "Edited captions deliver your real message. Include speaker changes and meaningful sounds, too."]
+    ]},
+    { id: "c4q2", prompt: "What about the 40 seconds of silent equipment setup?", key: 1, opts: [
+      ["Corrected captions will cover it, since captions include everything in the video.", "Captions carry audio. Silent visual steps have no audio, so captions can’t convey them."],
+      ["Narrate the key steps as you do them, or add audio description.", "Describing what you’re doing while you record is the simplest fix, and it helps every learner follow along."],
+      ["Post a transcript of the spoken audio next to the video.", "A transcript of the speech still leaves out the silent steps. A descriptive transcript that includes the visuals can help."],
+      ["Add on-screen text labels during the demo, with no narration.", "On-screen text helps sighted viewers, but a screen reader can’t read text inside a video."]
+    ]}
+  ],
+  demoTitle: "Find the caption error",
+  tip: "Auto-generated isn’t finished. Build a caption check into publishing, and say what you show.",
+  steps: ["Open the video in your media platform’s caption editor.", "Play it back and fix errors in words, names and timing.", "Add speaker names and meaningful sounds, such as [timer beeps].", "Narrate silent visual steps, or re-record that part."],
+  note: "Ally can flag some videos without captions. It can’t check whether the captions match what you said.",
+  skills: ["Review and correct automatic captions", "Narrate or describe essential visuals", "Know the difference between captions, transcripts and description"]
+},
+{
+  key: "design", icon: "design", title: "Design for Everyone", short: "Color & tables", badge: "Design Champion",
+  desc: "Use text labels, readable contrast and real table headers.",
+  lead: "A course page marks required work in red and optional work in green, gives directions in pale gold text, and lays out the schedule in a table whose top row is just bold text.",
+  artifact: () => `<div class="artifact"><span class="artifact-label">Course page</span><div class="browser"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>Blackboard · Week 2</span></div><div class="browser-body course-page">
+    <p class="mock-h">Week 2 tasks</p><p class="pale" aria-hidden="true">Complete the red tasks before Friday. Green tasks are for extra practice.</p><p class="sr-only">Directions, shown in pale gold text: Complete the red tasks before Friday. Green tasks are for extra practice.</p>
+    ${taskList()}
+    <table class="mock-table" aria-label="Sample schedule (no header row)"><tr><td>Week</td><td>Task</td><td>Due</td></tr><tr><td>2</td><td>Reading response</td><td>Sept 12</td></tr><tr><td>3</td><td>Peer review</td><td>Sept 19</td></tr></table>
+  </div></div></div>`,
+  practice: {
+    legend: "Spot the barriers. Select every feature that needs attention.",
+    opts: [
+      ["Required and optional are shown only by color", true, "Students who are colorblind, or who use a screen reader, can’t tell required from optional."],
+      ["The directions are pale gold on white", true, "That pairing is about 2:1 contrast. Body text needs at least 4.5:1."],
+      ["The table’s top row isn’t marked as a header row", true, "Without a header row, a screen reader can’t announce “Due” when a student reaches a date."],
+      ["The task names are clear and specific", false, "Clear task names help everyone. Keep them."]
+    ]
+  },
+  q: [
+    { id: "c5q1", prompt: "How should you fix the color-coded tasks?", key: 0, opts: [
+      ["Add the words “Required” and “Optional” and keep the colors as an extra cue.", "Text carries the meaning for everyone. Color can still reinforce it."],
+      ["Swap red and green for orange and blue, which more people can tell apart.", "A better palette helps some colorblind students, but screen reader users still get nothing. Meaning needs words."],
+      ["Add a legend at the top: red means required, green means optional.", "A legend still depends on seeing color."],
+      ["Darken the red and brighten the green so the difference is obvious.", "Stronger colors are still only colors."]
+    ]},
+    { id: "c5q2", prompt: "How should you fix the schedule table?", key: 3, opts: [
+      ["Bold and shade the first row so it clearly looks like a header.", "That’s what it does now. Styling doesn’t tell assistive technology which cells are headers."],
+      ["Paste the schedule as a screenshot so the formatting stays consistent.", "An image of a table has no text to read or navigate, unless you also provide the data."],
+      ["Use tabs and spaces instead of a table so it reads as plain text.", "Spacing loses the row and column relationships entirely."],
+      ["Mark the first row as a header row and avoid merged or empty cells.", "In Word, turn on Header Row and Repeat as Header Row. In Blackboard’s editor, set the first row’s cells as headers."]
+    ]}
+  ],
+  demoTitle: "Test color and contrast",
+  tip: "Design so students don’t have to overcome the course before they can learn from it.",
+  steps: ["Add text labels anywhere color carries meaning.", "Check text contrast with a contrast checker. Aim for 4.5:1 or higher.", "Mark table header rows and keep tables simple.", "Review Ally feedback for contrast and table issues, then fix the source file."],
+  note: "Accessibility removes barriers. Universal Design for Learning adds flexible ways to engage and show learning. Flexible options help many students, but they don’t replace accessible required materials or approved accommodations.",
+  skills: ["Never rely on color alone", "Check text contrast (4.5:1)", "Mark real table headers"]
+},
+{
+  key: "pdf", icon: "pdf", title: "Rescue the Scanned PDF", short: "PDFs", badge: "Document Rescuer", isNew: true,
+  desc: "Start from accessible sources and export PDFs the right way.",
+  lead: "You posted a journal article you scanned years ago. It looks fine, but each page is a picture of text. A screen reader finds nothing to read, and no student can search it, highlight it or enlarge it without blurring.",
+  artifact: () => `<div class="artifact"><span class="artifact-label">Week 6 reading</span>${scanMock(false)}</div>`,
+  q: [
+    { id: "c6q1", prompt: "What’s the best first step?", key: 1, opts: [
+      ["Rescan it at a higher resolution so the text is sharper.", "Sharper pixels are still pixels. A scan has no real text unless it goes through OCR, and OCR results need checking."],
+      ["Look for a digital copy through the library databases or the publisher.", "A digital original usually has real text, and often tags. Mercer’s librarians can help you find one."],
+      ["Leave it. Ally’s alternative formats make it fully accessible.", "Ally can produce an OCR version of a scanned PDF, which helps, but OCR quality varies and the file you posted still has the barrier."],
+      ["Add alt text to each page, such as “Page 1 of the article.”", "That tells students a page exists, not what it says."]
+    ]},
+    { id: "c6q2", prompt: "You’re turning your Word syllabus into a PDF. Which approach keeps it accessible?", key: 2, opts: [
+      ["Use File › Print › Microsoft Print to PDF so the layout matches exactly.", "Printing to PDF usually discards headings, alt text and tags."],
+      ["Add a password that blocks copying so students can’t alter it.", "Some security settings also block assistive technology from reading the text."],
+      ["Run Check Accessibility, then Save As › PDF with document structure tags turned on.", "Fix issues in Word first, then export. The Options button in the Save As dialog has the “Document structure tags for accessibility” setting."],
+      ["Export an image-based PDF so fonts look identical on every device.", "That turns the text into pictures, the same problem as a scan."]
+    ]}
+  ],
+  demoTitle: "Ask the screen reader to read it",
+  tip: "Fix the source, not the PDF. An accessible Word file in means an accessible PDF out.",
+  steps: ["In Word, open Review › Check Accessibility and fix what it flags.", "Use Save As › PDF or Export › Create PDF, not Print to PDF.", "For scanned readings, ask the library for a digital copy.", "Upload the file and check the Ally indicator. Ally flags scanned PDFs."],
+  note: "Can’t find a digital version? Ask MercerOnline about OCR and remediation options well before the term starts.",
+  skills: ["Replace scans with digital sources", "Export PDFs with tags, not Print to PDF", "Run Word’s Accessibility Checker first"]
+},
+{
+  key: "slides", icon: "slides", title: "Slides That Speak", short: "Slides", badge: "Slide Master", isNew: true,
+  desc: "Give every slide a unique title and a logical reading order.",
+  lead: "Your Week 5 PowerPoint has 30 slides. Several have no title, and you built some with extra text boxes. A screen reader reads a slide’s parts in the order they were added, not the order you see.",
+  artifact: () => `<div class="artifact"><span class="artifact-label">Slide 12 of 30</span>${slideMock(false, false)}</div>`,
+  q: [
+    { id: "c7q1", prompt: "Which approach to slide titles works best?", key: 3, opts: [
+      ["Use the same title, “Week 5 Lecture,” on every slide for consistency.", "Identical titles make every slide sound the same when students navigate."],
+      ["Type titles in text boxes so you can place them anywhere.", "Text boxes aren’t recognized as titles. Use the layout’s title placeholder, which you can still move and restyle."],
+      ["Skip titles on image-heavy slides to keep the design clean.", "Without a title, students lose their place. PowerPoint lets you keep a title for screen readers even if you don’t want it visible."],
+      ["Give every slide a unique title in the layout’s title placeholder.", "Unique titles let students navigate and know where they are, and they become headings when the deck is exported."]
+    ]},
+    { id: "c7q2", prompt: "Before posting the deck, what’s the quickest built-in check?", key: 2, opts: [
+      ["Export it to PDF. The conversion fixes the reading order.", "Exporting keeps whatever order the slide already has, problems included."],
+      ["View it in Slide Sorter to make sure everything lines up.", "Slide Sorter shows how slides look, not how they’re read."],
+      ["Run Review › Check Accessibility and fix what it flags.", "PowerPoint’s checker finds missing titles, missing alt text and reading-order issues, and links to the Reading Order pane."],
+      ["Switch to a high-contrast theme. That covers the main issues.", "Contrast matters, but it doesn’t fix missing titles, alt text or reading order."]
+    ]}
+  ],
+  demoTitle: "Watch the reading order",
+  tip: "Start from a layout, not a blank slide. Layouts give you a title and a sensible reading order automatically.",
+  steps: ["Use Home › Layout for each slide instead of loose text boxes.", "Run Review › Check Accessibility.", "Open the Reading Order pane and drag items so the title comes first.", "Post the .pptx along with any PDF so students can choose."],
+  note: "Ally checks uploaded PowerPoint files too. It flags missing alt text and other issues it can detect.",
+  skills: ["Give every slide a unique title", "Fix reading order in the Reading Order pane", "Run PowerPoint’s Accessibility Checker"]
+},
+{
+  key: "keyboard", icon: "keyboard", title: "Open Every Gate", short: "Keyboard & time", badge: "Gate Opener", isNew: true,
+  desc: "Make activities work by keyboard and plan for extended time.",
+  lead: "Your weekly quiz has a 30-minute limit, and you’ve added a publisher’s drag-and-drop matching activity. One student navigates with a keyboard only. Another has an approved accommodation for time and a half on tests.",
+  artifact: () => `<div class="artifact"><span class="artifact-label">This week’s activities</span><div class="browser"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>Blackboard · Week 7</span></div><div class="browser-body">
+    <p class="mock-h">Week 7 check-in</p><p><strong>Quiz 7</strong> · 10 questions · Time limit: 30 minutes</p><p><strong>Vocabulary match</strong> · Publisher activity · Drag each term onto its definition</p></div></div></div>`,
+  q: [
+    { id: "c8q1", prompt: "How should you handle the extended-time accommodation?", key: 1, opts: [
+      ["Remove the time limit for the whole class so no one needs special settings.", "That can work if timing isn’t essential, but it changes the test for everyone. You can set extra time for one student instead."],
+      ["Give that student 45 minutes with Blackboard’s accommodation or exception settings.", "Blackboard lets you give individual students extra time without changing the test for everyone. MercerOnline can show you where the setting is in your course."],
+      ["Suggest the student answer the easy questions first to save time.", "Study strategies don’t replace an approved accommodation."],
+      ["Email the student a Word copy of the quiz to finish on their own time.", "This creates a different experience and extra grading work. Use the built-in settings."]
+    ]},
+    { id: "c8q2", prompt: "Before you adopt the drag-and-drop activity, what should you check?", key: 0, opts: [
+      ["Try it with only the keyboard, and ask the publisher for its accessibility conformance report (ACR or VPAT).", "A few minutes with the Tab key reveals a lot. The report documents known gaps, and MercerOnline can help you review it."],
+      ["Look for “ADA compliant” on the publisher’s website.", "Marketing claims aren’t evidence. Ask for the conformance report and test the activity yourself."],
+      ["Nothing. Publishers are responsible for accessibility, not instructors.", "If you assign it, students experience it as part of your course. Check it before you adopt it."],
+      ["Make sure it works in Chrome, which has a built-in screen reader.", "Chrome doesn’t include a screen reader on Windows or Mac. Test with the keyboard and ask for documentation."]
+    ]}
+  ],
+  demoTitle: "Put the mouse down",
+  tip: "If you can’t do it with Tab, Enter and the arrow keys, some students can’t do it at all.",
+  steps: ["Set your mouse aside and Tab through the activity. Can you reach and finish everything?", "Ask vendors for an Accessibility Conformance Report (ACR or VPAT).", "Set individual time accommodations in Blackboard for approved students.", "Plan an accessible alternative when a tool can’t be fixed in time."],
+  note: "Accommodations come through the college’s accessibility services office. If you’re unsure how to apply one, contact that office or MercerOnline.",
+  skills: ["Test activities with the keyboard only", "Request an ACR/VPAT before adopting tools", "Apply individual time accommodations"]
+}
+];
+const QMAP = {}; CH.forEach((c, i) => c.q.forEach((q, j) => QMAP[q.id] = { c: i, j, q }));
+const TOTAL = CH.length * 20;
+
+/* ---------- Shared mock pieces ---------- */
+function chartSvg() {
+  return `<svg viewBox="0 0 320 170" width="100%" style="max-width:360px;display:block" aria-hidden="true">
+    <line x1="40" y1="140" x2="310" y2="140" stroke="#999"/><line x1="40" y1="20" x2="40" y2="140" stroke="#999"/>
+    ${[0,25,50,75,100].map(v=>`<text x="34" y="${144-v*1.2}" font-size="10" text-anchor="end" fill="#555">${v}%</text><line x1="40" y1="${140-v*1.2}" x2="310" y2="${140-v*1.2}" stroke="#eee"/>`).join("")}
+    ${[[40,"Week 1"],[70,"Week 2"],[90,"Week 3"]].map(([v,l],i)=>`<rect x="${70+i*80}" y="${140-v*1.2}" width="46" height="${v*1.2}" rx="3" fill="#056331"/><text x="${93+i*80}" y="${134-v*1.2}" font-size="11" text-anchor="middle" font-weight="700" fill="#153029">${v}%</text><text x="${93+i*80}" y="156" font-size="11" text-anchor="middle" fill="#333">${l}</text>`).join("")}
+  </svg>`;
+}
+function taskList() {
+  return `<div class="tasks">${[["req","Reading response"],["req","Discussion post"],["opt","Practice quiz"],["opt","Bonus video"]].map(([k,t])=>`<div class="task"><span class="dot d-${k}" aria-hidden="true"></span><span class="tlabel d-${k}">${k==="req"?"Required":"Optional"}</span><span>${t}</span></div>`).join("")}</div>`;
+}
+function videoMock(cap, wrong) {
+  return `<div class="video" aria-hidden="true"><div class="scene"><svg viewBox="0 0 100 100"><rect x="46" y="10" width="8" height="70" fill="#cfd8d3"/><rect x="30" y="80" width="40" height="8" rx="2" fill="#cfd8d3"/><path d="M42 30h16l-3 26h-10z" fill="#9fd2a6"/><circle cx="50" cy="64" r="3" fill="#EBA904"/></svg></div>
+  <div class="cap">${wrong ? `<mark>Do</mark> submit the practice file` : cap}</div>
+  <div class="ctrl"><span>▶</span><span>2:14 / 6:02</span><span class="bar"></span><span class="ccbadge">CC</span></div></div>`;
+}
+function scanMock(digital) {
+  return `<div class="scan${digital ? " digital" : ""}" id="scanPage" aria-hidden="true"><span class="stamp">${digital ? "Digital text" : "Scanned image"}</span>
+    <h4>Motivation in Online Learning</h4><p><em>Journal of Teaching Practice, Vol. 12</em></p>
+    <p>Learners who can navigate course materials quickly report higher persistence. Structure, clarity and predictable design reduce the effort students spend finding information.</p>
+    <p>Instructors who build accessible materials from the start spend less time on later fixes.</p></div>`;
+}
+function slideMock(fixed, badges) {
+  const pos = fixed ? { title: 1, bullets: 2, img: 3, foot: 4 } : { foot: 1, img: 2, bullets: 3, title: 4 };
+  const b = (k, style) => badges ? `<span class="ord" style="${style}" aria-hidden="true">${pos[k]}</span>` : "";
+  return `<div class="slide${fixed ? " fixed" : ""}" aria-hidden="true">
+    ${b("title","left:1.5%;top:4%")}<p class="s-title">Photosynthesis: Light Reactions</p>
+    ${b("bullets","left:1.5%;top:30%")}<ul><li>Light hits chlorophyll</li><li>Water molecules split</li><li>ATP and NADPH form</li></ul>
+    ${b("img","right:3%;top:26%")}<div class="s-img"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="8" fill="#EBA904"/><g stroke="#EBA904" stroke-width="3">${[0,45,90,135,180,225,270,315].map(a=>`<line x1="20" y1="20" x2="${20+16*Math.cos(a*Math.PI/180)}" y2="${20+16*Math.sin(a*Math.PI/180)}" transform="translate(0)"/>`).join("")}</g><circle cx="20" cy="20" r="8" fill="#EBA904"/></svg></div>
+    ${b("foot","left:1.5%;bottom:3%")}<p class="s-foot">BIO 101 · Week 5</p></div>`;
+}
+
+/* ---------- State ---------- */
+const fresh = () => ({ version: 2, route: { v: "welcome" }, answers: {}, seen: {}, complete: [], last: {}, practice: [], practiceChecked: false, commitment: "", material: "", date: "", started: false });
+let state = fresh(), storageOK = true, hadSaved = false;
+const $ = id => document.getElementById(id);
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function validRoute(r) {
+  if (!r || typeof r !== "object") return false;
+  if (["welcome", "map", "results", "plan", "myplan", "finish"].includes(r.v)) return true;
+  return r.v === "ch" && Number.isInteger(r.c) && r.c >= 0 && r.c < CH.length && Number.isInteger(r.s) && r.s >= 0 && r.s <= 5;
+}
+function valid(s) {
+  try {
+    return s && s.version === 2 && validRoute(s.route) && typeof s.answers === "object" &&
+      Object.entries(s.answers).every(([k, v]) => QMAP[k] && Number.isInteger(v) && v >= 0 && v < QMAP[k].q.opts.length) &&
+      Array.isArray(s.complete) && s.complete.every(x => Number.isInteger(x) && x >= 0 && x < CH.length) &&
+      typeof s.commitment === "string" && s.commitment.length <= 500 && typeof s.material === "string" && typeof s.date === "string";
+  } catch (e) { return false; }
+}
+function notice(t) { const n = $("storageNotice"); n.hidden = false; n.textContent = t; }
+try {
+  const raw = localStorage.getItem(CONFIG.storageKey);
+  if (raw) {
+    const s = JSON.parse(raw);
+    if (valid(s)) { state = { ...fresh(), ...s, complete: [...new Set(s.complete)] }; hadSaved = state.started; }
+    else notice("Saved progress came from a different version, so a new attempt has started.");
+  }
+} catch (e) { storageOK = false; notice("This browser can’t save progress. You can keep going, but your progress may be lost when you leave."); }
+function persist() {
+  if (!storageOK) return;
+  try { localStorage.setItem(CONFIG.storageKey, JSON.stringify(state)); }
+  catch (e) { storageOK = false; notice("This browser can’t save progress. You can keep going, but your progress may be lost when you leave."); }
+}
+function announce(t) { const s = $("status"); s.textContent = ""; setTimeout(() => { s.textContent = t; }, 60); }
+
+const pts = c => CH[c].q.reduce((a, q) => a + (state.answers[q.id] === q.key ? 10 : 0), 0);
+const score = () => CH.reduce((a, _, i) => a + pts(i), 0);
+const pct = () => Math.round(score() / TOTAL * 100);
+const isDone = c => state.complete.includes(c);
+const status = c => isDone(c) ? "Complete" : state.last[c] !== undefined ? "In progress" : "Not started";
+
+/* ---------- Navigation ---------- */
+function go(route, opts = {}) {
+  if (route.v === "results" && state.complete.length < CH.length) { route = { v: "map" }; opts.say = "Complete all eight challenges to see your results."; }
+  if (route.v === "myplan" && !state.commitment.trim()) route = { v: "plan" };
+  if (route.v === "ch") {
+    const C = CH[route.c];
+    if (route.s === 5 && !C.q.every(q => state.answers[q.id] !== undefined)) {
+      route.s = state.answers[C.q[0].id] === undefined ? 1 : 3;
+      opts.say = "Answer both questions to complete this challenge.";
+    }
+    state.last[route.c] = route.s;
+    (state.seen[route.c] ||= []); if (!state.seen[route.c].includes(route.s)) state.seen[route.c].push(route.s);
+    if (route.s === 5 && !isDone(route.c)) { state.complete.push(route.c); opts.celebrate = true; }
+  }
+  if (route.v !== "welcome") state.started = true;
+  state.route = route; persist(); render(opts);
+  window.scrollTo(0, 0);
+  const t = $("title"); if (t) t.focus({ preventScroll: true });
+  if (opts.say) announce(opts.say);
+}
+function startChallenge(c) {
+  const s = isDone(c) ? 0 : (state.last[c] ?? 0);
+  go({ v: "ch", c, s: s === 5 ? 0 : s });
+}
+function parseNav(s) {
+  const [v, c, st] = s.split(":");
+  return v === "ch" ? { v, c: +c, s: +st } : { v };
+}
+const btn = (label, nav, cls = "", icon = "") => `<button type="button" class="btn ${cls}" data-nav="${nav}">${icon && cls.includes("back") ? icon : ""}<span>${label}</span>${icon && !cls.includes("back") ? icon : ""}</button>`;
+const act = (label, action, cls = "", icon = "") => `<button type="button" class="btn ${cls}" data-action="${action}">${icon}<span>${label}</span></button>`;
+
+/* ---------- Trail ---------- */
+function renderTrail() {
+  const r = state.route, show = r.v !== "welcome" && r.v !== "finish";
+  $("trailbar").hidden = !show;
+  if (!show) return;
+  const n = state.complete.length;
+  $("trailCount").textContent = `${n} of ${CH.length} complete`;
+  const cur = r.v === "ch" ? r.c : -1;
+  $("trail").innerHTML = CH.map((c, i) => `<li class="${isDone(i) ? "done" : ""} ${cur === i ? "current" : ""}">
+      <button type="button" data-challenge="${i}" ${cur === i ? 'aria-current="step"' : ""} aria-label="Challenge ${i + 1}: ${esc(c.title)}, ${status(i).toLowerCase()}">
+        <span class="node">${ICON[c.icon]}${isDone(i) ? `<span class="check">${ICON.check}</span>` : ""}</span>
+        <span class="node-name" aria-hidden="true">${esc(c.short)}</span>
+      </button>${cur === i ? `<img class="trail-mav" src="${MAV}" alt="">` : ""}</li>`).join("") +
+    `<span class="trail-fill" aria-hidden="true" style="width:calc((100% - 100%/8) * ${n / CH.length})"></span>`;
+}
+
+/* ---------- Views ---------- */
+function vWelcome() {
+  const resume = hadSaved && state.started;
+  return `<section class="hero on-dark"><div class="hero-inner">
+    <div>
+      <p class="eyebrow">MercerOnline · Accessibility in action</p>
+      <h1 id="title" tabindex="-1">Mustang <span class="gold">Momentum</span></h1>
+      <p class="tagline">Build better courses. Remove barriers. Keep learning moving.</p>
+      <p class="lead">Eight short challenges based on real course decisions. Make a call, see the barrier from a student’s side, and leave with one change for your own course.</p>
+      <div class="hero-actions">
+        ${resume ? act("Resume my ride", "resume", "gold", ICON.arrow) + btn("Go to the trail map", "map") : btn("Saddle up", "map", "gold", ICON.arrow)}
+      </div>
+    </div>
+    <div class="hero-art">
+      <p class="bubble">Hi, I’m Maverick! I’ll be your guide on the trail.</p>
+      <img src="${MAV}" alt="Maverick, the Mercer Mustang, smiling" width="360" height="360">
+    </div>
+  </div>
+  <div class="facts">
+    <div class="fact"><strong>8 challenges</strong>Headings, images, links, media, color, PDFs, slides and keyboard access</div>
+    <div class="fact"><strong>16 decisions</strong>Feedback on every option, not just the right one</div>
+    <div class="fact"><strong>About 4 min each</strong>Any order, no time limit, progress saves in this browser</div>
+  </div></section>
+  <div class="card-body">
+    <h2>Why it matters</h2>
+    <div class="why-grid">
+      <div class="why"><p class="num" aria-hidden="true">1</p><h3>One student, one barrier</h3><p>A syllabus without real headings becomes one long page for a screen reader user. They can’t jump to Grading, so they scroll and listen.</p></div>
+      <div class="why"><p class="num" aria-hidden="true">2</p><h3>Small decisions, big access</h3><p>A real heading, a meaningful image description or a corrected caption can decide whether a student can take part.</p></div>
+      <div class="why"><p class="num" aria-hidden="true">3</p><h3>Part of course design</h3><p>Accessibility works best built in from the start. Check current college guidance for institutional requirements and timelines.</p></div>
+    </div>
+    <div class="how">
+      <span class="pill">First answer counts · 10 points each</span>
+      <span class="pill">Explanations for every choice</span>
+      <span class="pill gold">Ends with your personal action plan</span>
+    </div>
+  </div>`;
+}
+
+function ring(p, size = 54) {
+  const R = size / 2 - 5, L = 2 * Math.PI * R;
+  return `<svg class="ring" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle class="bg" cx="${size/2}" cy="${size/2}" r="${R}"/><circle class="fg" cx="${size/2}" cy="${size/2}" r="${R}" stroke-dasharray="${L}" stroke-dashoffset="${L * (1 - p)}"/></svg>`;
+}
+function vMap() {
+  const n = state.complete.length, next = CH.findIndex((_, i) => !isDone(i));
+  return `<div class="card-body">
+    <div class="map-top">
+      <div><p class="eyebrow">Your dashboard</p><h1 id="title" tabindex="-1">Trail map</h1>
+      <p class="lead">${n === 0 ? "Pick any challenge. Challenge 1 is a good place to start." : n === CH.length ? "Every challenge complete. Your results are ready." : `Nice pace. ${CH.length - n} to go.`}</p></div>
+      <div class="stats">
+        <div class="stat">${ring(n / CH.length)}<div><strong>${n}/${CH.length}</strong><span>challenges</span></div></div>
+        <div class="stat">${ring(score() / TOTAL)}<div><strong>${score()}</strong><span>of ${TOTAL} points</span></div></div>
+      </div>
+    </div>
+    <ul class="grid">${CH.map((c, i) => `<li><article class="ch-card ${isDone(i) ? "is-done" : ""}" aria-labelledby="cht${i}">
+      <div class="top"><span class="tile">${ICON[c.icon]}</span>${isDone(i) ? `<span class="pill gold">${ICON.check.replace('aria-hidden="true"','aria-hidden="true" width="14" height="14"')} ${pts(i)}/20</span>` : status(i) === "In progress" ? `<span class="pill">In progress</span>` : c.isNew ? `<span class="pill dark">New</span>` : ""}</div>
+      <span class="num">Challenge ${i + 1}</span>
+      <h2 class="h3" id="cht${i}">${esc(c.title)}</h2><p>${esc(c.desc)}</p>
+      <button type="button" class="btn small ${i === next ? "primary" : ""}" data-challenge="${i}" aria-describedby="cht${i}">${isDone(i) ? "Review" : status(i) === "In progress" ? "Resume" : "Start"}</button>
+    </article></li>`).join("")}</ul>
+    <div class="map-foot on-dark">
+      <div><p><strong>Badges earned</strong></p>${miniBadges()}</div>
+      ${n === CH.length ? btn("See my results", "results", "gold", ICON.arrow) : `<p>Finish all eight to unlock your results and action plan.</p>`}
+    </div>
+  </div>`;
+}
+function miniBadges() {
+  return `<ul class="mini-badges">${CH.map((c, i) => `<li class="${isDone(i) ? "got" : ""}"><span class="sr-only">${esc(c.badge)} badge: ${isDone(i) ? "earned" : "not yet earned"}</span>${ICON[c.icon]}</li>`).join("")}</ul>`;
+}
+
+function chHead(c, s, title) {
+  const C = CH[c], seen = state.seen[c] || [];
+  return `<div class="ch-head on-dark"><div class="ch-head-row"><span class="ch-icon">${ICON[C.icon]}</span>
+    <div><p class="eyebrow">Challenge ${c + 1} of ${CH.length} · ${esc(C.title)}</p><h1 id="title" tabindex="-1">${esc(title)}</h1></div></div>
+    <ol class="steps" aria-label="Steps in this challenge">${STEP_NAMES.map((n, i) => `<li class="${seen.includes(i) ? "seen" : ""}" ${i === s ? 'aria-current="step"' : ""}><span class="k">Step ${i + 1}<span class="sr-only"> of 6${seen.includes(i) && i !== s ? ", visited" : ""}</span></span><span class="t">${n}</span></li>`).join("")}</ol></div>`;
+}
+function vChallenge(c, s) {
+  const C = CH[c];
+  const nav = (back, next, nextLabel) => `<div class="actions">${btn("Back", back, "ghost back", ICON.back)}${btn("Trail map", "map", "ghost")}<span class="spacer"></span>${next ? btn(nextLabel, next, "primary", ICON.arrow) : ""}</div>`;
+  if (s === 0) return chHead(c, s, C.title) + `<div class="card-body"><p class="lead">${esc(C.lead)}</p>${C.artifact()}${C.practice ? practice(C) : ""}${nav("map", `ch:${c}:1`, "Make your call")}</div>`;
+  if (s === 1 || s === 3) {
+    const q = C.q[s === 1 ? 0 : 1], answered = state.answers[q.id] !== undefined;
+    return chHead(c, s, s === 1 ? "Your call" : "Your call, round two") + `<div class="card-body">${question(q)}${nav(`ch:${c}:${s - 1}`, answered ? `ch:${c}:${s + 1}` : "", s === 1 ? "Experience it" : "Fix it in your course")}</div>`;
+  }
+  if (s === 2) return chHead(c, s, C.demoTitle) + `<div class="card-body">${DEMOS[C.key].html()}${nav(`ch:${c}:1`, `ch:${c}:3`, "Next question")}</div>`;
+  if (s === 4) return chHead(c, s, "Fix it in your course") + `<div class="card-body">
+    <div class="tip"><img src="${MAV}" alt="" width="150" height="150"><div class="tip-bubble on-dark"><p class="eyebrow">Maverick’s tip</p><p class="q">${esc(C.tip)}</p></div></div>
+    <h2>Your workflow</h2><ol class="workflow">${C.steps.map(t => `<li>${esc(t)}</li>`).join("")}</ol>
+    <div class="callout">${ICON.info}<p><strong>Keep in mind:</strong> ${esc(C.note)}</p></div>
+    ${nav(`ch:${c}:3`, `ch:${c}:5`, "Earn my badge")}</div>`;
+  // s === 5: badge
+  const next = CH.findIndex((_, i) => !isDone(i)), p = pts(c);
+  return chHead(c, s, `Badge earned: ${C.badge}`) + `<div class="card-body"><div class="done">
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+    ${badge(C, true)}
+    <div><p class="lead">You finished <strong>${esc(C.title)}</strong> with <strong>${p} of 20</strong> knowledge points.${p < 20 ? " Revisit the explanations any time from the Trail map." : " A perfect run."}</p>
+    <h2>Skills you practiced</h2><ul class="skills">${C.skills.map(t => `<li>${ICON.check}<span>${esc(t)}</span></li>`).join("")}</ul></div></div>
+    <div class="actions">${btn("Trail map", "map", "ghost")}<span class="spacer"></span>${state.complete.length === CH.length ? btn("See my results", "results", "primary", ICON.arrow) : btn(`Next: ${CH[next].title}`, `ch:${next}:${state.last[next] ?? 0}`, "primary", ICON.arrow)}</div></div>`;
+}
+function badge(C, pop) {
+  const dots = Array.from({ length: 12 }, (_, i) => { const a = i * 30 * Math.PI / 180; return `<circle cx="${(100 + 74 * Math.sin(a)).toFixed(1)}" cy="${(100 - 74 * Math.cos(a)).toFixed(1)}" r="3" fill="#153029"/>`; }).join("");
+  return `<div class="badge ${pop ? "pop" : ""}"><div class="badge-disc" aria-hidden="true"><svg class="b" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="96" fill="#153029"/><circle cx="100" cy="100" r="86" fill="#EBA904"/><circle cx="100" cy="100" r="60" fill="#f6c94c"/>${dots}
+  </svg><span class="icon">${ICON[C.icon]}</span></div><span class="ribbon">${esc(C.badge)}</span></div>`;
+}
+
+function question(q) {
+  const a = state.answers[q.id], answered = a !== undefined, L = "ABCD";
+  let out = `<form id="qform" data-q="${q.id}" novalidate><fieldset class="options"><legend><span class="prompt">${esc(q.prompt)}</span></legend>
+    ${q.opts.map((o, i) => {
+      const cls = answered ? (i === q.key ? "is-key" : i === a ? "is-wrong" : "") : "";
+      const mark = answered ? (i === q.key ? "Best answer" : i === a ? "Your answer" : "") : "";
+      return `<label class="opt ${cls}"><input type="radio" name="ans" value="${i}" ${a === i ? "checked" : ""} ${answered ? "disabled" : ""}><span class="letter" aria-hidden="true">${L[i]}</span><span>${esc(o[0])}${mark ? `<span class="mark"> · ${mark}</span>` : ""}</span></label>`;
+    }).join("")}</fieldset>
+    <p class="error" id="qerr" hidden></p>
+    ${answered ? "" : `<div class="check-row"><button type="submit" class="btn primary">Lock in my answer</button><span class="small muted">Your first answer counts toward your score.</span></div>`}
+  </form>`;
+  if (answered) {
+    const ok = a === q.key;
+    out += `<div class="fb ${ok ? "good" : "bad"}"><span class="fb-icon" aria-hidden="true">${ok ? ICON.check : ICON.retry}</span><div>
+      <h2 id="fbTitle" tabindex="-1">${ok ? "Right on track." : "Not quite. Here’s why."}</h2>
+      <p>${esc(q.opts[a][1])}</p>
+      ${ok ? "" : `<p><strong>Best answer:</strong> ${esc(q.opts[q.key][0])} ${esc(q.opts[q.key][1])}</p>`}
+      <p class="pts">${ok ? "+10" : "0"} knowledge points · first answer saved</p>
+      <details class="why-all"><summary>Why each option</summary><ul>${q.opts.map((o, i) => `<li><strong>${L[i]} · ${i === q.key ? "Best" : "Less effective"}</strong>${esc(o[1])}</li>`).join("")}</ul></details>
+    </div></div>`;
+  }
+  return out;
+}
+
+function practice(C) {
+  const P = C.practice, sel = state.practice || [];
+  return `<div class="practice"><form id="pform" novalidate><fieldset class="checks"><legend>${esc(P.legend)}</legend>
+    ${P.opts.map((o, i) => `<label class="chk"><input type="checkbox" name="p" value="${i}" ${sel.includes(i) ? "checked" : ""}><span>${esc(o[0])}</span></label>`).join("")}</fieldset>
+    <button type="submit" class="btn">Check my picks</button></form><div id="pfb">${state.practiceChecked ? practiceFeedback(C) : ""}</div></div>`;
+}
+function practiceFeedback(C) {
+  const sel = state.practice || [];
+  const right = C.practice.opts.every((o, i) => o[1] === sel.includes(i));
+  return `<p id="pfbTitle" tabindex="-1" style="margin-top:16px"><strong>${right ? "You spotted all three barriers." : "Here’s how each one breaks down."}</strong></p><ul class="pfb">${C.practice.opts.map((o, i) => {
+    const picked = sel.includes(i), correct = o[1] === picked;
+    return `<li class="${correct ? "right" : "miss"}"><strong>${o[1] ? "Barrier" : "Not a barrier"}${correct ? "" : picked ? " (you selected it)" : " (you missed it)"}:</strong> ${esc(o[0])}. ${esc(o[2])}</li>`;
+  }).join("")}</ul>`;
+}
+
+/* ---------- Demos ---------- */
+const demoState = {};
+const consoleBox = (title, body, id) => `<div class="console" ><div class="console-bar">${ICON.ear}<span>${title}</span></div><div class="console-body" id="${id}">${body}</div></div>`;
+const intro = t => `<div class="demo-intro">${ICON.info}<p>${t}</p></div>`;
+const DEMOS = {
+  structure: {
+    html() {
+      const on = !!demoState.structure;
+      const lbl = (h, t, id) => `<p class="${h === 1 ? "big" : "lbl"}" id="${id}" tabindex="-1"><span class="htag" aria-hidden="true">H${h}</span>${t}</p>`;
+      return intro("Screen reader users often open a list of headings to jump around a page. Here’s what that list shows for this syllabus. Apply heading styles and watch it change.") +
+      `<div class="demo"><div class="paper ${on ? "styled" : ""}" id="hdoc">${lbl(1, "ENG 101 Syllabus", "h-a")}<p>Composition I · Fall</p>${lbl(2, "Course overview", "h-b")}<p>Drafting, feedback and revision.</p>${lbl(2, "Weekly work", "h-c")}<p>A reading, a post and a writing task.</p>${lbl(2, "Grading", "h-d")}<p>Essays 60% · Discussions 25% · Reflections 15%</p></div>
+      ${consoleBox("Screen reader · Headings list", on ? `<ul>${[["h-a",1,"ENG 101 Syllabus"],["h-b",2,"Course overview"],["h-c",2,"Weekly work"],["h-d",2,"Grading"]].map(([id,l,t])=>`<li style="margin-left:${(l-1)*18}px"><button type="button" class="jump" data-jump="${id}">Heading level ${l}: ${t}</button></li>`).join("")}</ul><p class="ok" style="margin-top:10px">4 headings. Select one to jump there.</p>` : `<p class="empty">No headings found.</p><p class="say">“Page has no headings.”</p>`, "hcon")}</div>
+      <div class="toolbar"><button type="button" class="btn ${on ? "" : "primary"}" data-demo="structure" aria-pressed="${on}">${on ? "Heading styles applied" : "Apply heading styles"}</button></div>`;
+    },
+    toggle() { demoState.structure = !demoState.structure; return demoState.structure ? "Heading styles applied. The headings list now shows four headings." : "Heading styles removed. No headings found."; }
+  },
+  images: {
+    html() {
+      const k = demoState.images ?? 0;
+      const ALTS = [["No alt text", "graphic, chart1.png", "meh", "The filename tells the student nothing."], ["“Bar chart”", "graphic, Bar chart", "meh", "The student knows a chart exists, but not what it shows."], ["Meaningful alt text", "graphic, Participation rose each week: 40% in Week 1, 70% in Week 2 and 90% in Week 3.", "ok", "The student gets the same information as everyone else."]];
+      return intro("Choose an alt text and listen to what a screen reader announces when it reaches the chart.") +
+      `<div class="demo"><div class="paper">${chartSvg()}</div>${consoleBox("Screen reader · Reading the chart", `<p class="say">“${ALTS[k][1]}”</p><p class="${ALTS[k][2]}">${ALTS[k][3]}</p>`, "icon")}</div>
+      <div class="toolbar" role="group" aria-label="Alt text options"><span class="label">Try:</span>${ALTS.map((a, i) => `<button type="button" class="btn small" data-demo="images" data-v="${i}" aria-pressed="${k === i}">${a[0]}</button>`).join("")}</div>`;
+    },
+    toggle(v) { demoState.images = +v; return "Screen reader output updated."; }
+  },
+  links: {
+    html() {
+      const on = !!demoState.links;
+      const L = on ? ["Week 3 Research Guide", "Essay Rubric (PDF)", "Essay Submission Page"] : ["click here", "click here", "Click here"];
+      return intro("This is the links list a screen reader builds for the announcement. Rename the links and compare.") +
+      `<div class="demo"><div class="browser"><div class="browser-body"><p class="mock-h">Week 3: Research essay</p><p>${on ? `Start with the <span class="fake-link">Week 3 Research Guide</span>. Review the <span class="fake-link">Essay Rubric (PDF)</span>. Submit on the <span class="fake-link">Essay Submission Page</span>.` : `For the research guide, <span class="fake-link">click here</span>. For the rubric, <span class="fake-link">click here</span>. Ready to submit? <span class="fake-link">Click here</span>.`}</p></div></div>
+      ${consoleBox("Screen reader · Links list", `<ol>${L.map(t => `<li class="say">${t}</li>`).join("")}</ol><p class="${on ? "ok" : "meh"}" style="margin-top:10px">${on ? "Every destination is clear." : "Three links, no way to tell them apart."}</p>`, "lcon")}</div>
+      <div class="toolbar"><button type="button" class="btn ${on ? "" : "primary"}" data-demo="links" aria-pressed="${on}">${on ? "Links renamed" : "Rename the links"}</button></div>`;
+    },
+    toggle() { demoState.links = !demoState.links; return demoState.links ? "Links renamed. Each destination is clear." : "Links reset to click here."; }
+  },
+  media: {
+    html() {
+      const d = demoState.media || { found: false, fixed: false, msg: "" };
+      const LINES = [["0:58", "Today we’re setting up the titration lab.", "Today we’re setting up the titration lab."], ["2:14", "Do not submit the practice file", d.fixed ? "Do not submit the practice file" : "Do submit the practice file"], ["2:17", "until you’ve checked it against the rubric.", "until you’ve checked it against the rubric."], ["2:20", "(40 seconds of silence while the equipment is set up)", "[no captions]"]];
+      return intro("Compare what was said with what the captions show. Select the caption line with the error.") +
+      `<div style="margin-top:20px">${videoMock(d.fixed ? "Do not submit the practice file" : "", !d.fixed)}</div>
+      <div style="margin-top:22px"><div class="cap-head" aria-hidden="true"><span>Time</span><span>Caption</span><span class="h">What you said</span></div>
+      <ul class="caplist">${LINES.map((l, i) => `<li><button type="button" class="capline ${i === 1 && d.found ? (d.fixed ? "fixed" : "found") : ""}" data-demo="media" data-v="${i}"><span class="t">${l[0]}</span><span>${esc(l[2])}</span><span class="heard"><span class="sr-only">Audio: </span>${esc(l[1])}</span></button></li>`).join("")}</ul></div>
+      <p id="mmsg" style="margin-top:14px;font-weight:700">${esc(d.msg)}</p>
+      ${d.found && !d.fixed ? `<div class="toolbar"><button type="button" class="btn primary" data-demo="media" data-v="fix">Correct the caption</button></div>` : ""}`;
+    },
+    toggle(v) {
+      const d = demoState.media ||= { found: false, fixed: false, msg: "" };
+      if (v === "fix") { d.fixed = true; d.msg = "Fixed. The caption now matches what you said."; }
+      else if (+v === 1) { d.found = true; d.msg = d.fixed ? "This line is already corrected." : "Found it. The caption dropped “not” and reversed your instruction."; }
+      else if (+v === 3) d.msg = "Captions can’t help here: there’s no audio to caption. This is where narration or audio description comes in.";
+      else d.msg = "This line matches the audio. Keep looking.";
+      return d.msg;
+    }
+  },
+  design: {
+    html() {
+      const d = demoState.design || { gray: false, labels: false, color: "#EBA904" };
+      const SW = [["Pale gold", "#EBA904"], ["Light gray", "#9AA39D"], ["Dark gold", "#8A5A00"], ["Mercer green", "#056331"], ["Deep green", "#153029"]];
+      const r = contrast(d.color, "#FFFFFF"), pass = r >= 4.5;
+      return intro("Part 1: Simulate grayscale to see what a student who can’t distinguish red from green might experience. Then add text labels.") +
+      `<div class="demo"><div class="browser"><div class="browser-body course-page ${d.gray ? "grayscale" : ""} ${d.labels ? "labels-on" : ""}"><p class="mock-h">Week 2 tasks</p>${taskList()}</div></div>
+      ${consoleBox("What a student can tell", `<p class="${d.labels ? "ok" : "meh"}">${d.labels ? "Required and optional are clear in color, in grayscale and to a screen reader." : d.gray ? "In grayscale, all four dots look alike. Which tasks are required?" : "Only color separates required from optional. A screen reader announces nothing about it."}</p>`, "dcon")}</div>
+      <div class="toolbar"><button type="button" class="btn small" data-demo="design" data-v="gray" aria-pressed="${d.gray}">Simulate grayscale</button><button type="button" class="btn small" data-demo="design" data-v="labels" aria-pressed="${d.labels}">Add text labels</button></div>
+      <h2 style="margin-top:34px">Part 2: Check the contrast</h2>
+      <fieldset class="swatches"><legend>Pick a text color for the directions (on a white background)</legend>${SW.map(([n, h]) => `<label class="swatch"><input type="radio" name="sw" value="${h}" ${d.color === h ? "checked" : ""} data-demo="design" data-v="color"><i style="background:${h}"></i>${n}</label>`).join("")}</fieldset>
+      <div class="contrast-out"><div class="ratio" style="color:${pass ? "var(--forest)" : "var(--rust)"}">${r.toFixed(1)}:1</div>
+      <div><p class="contrast-sample" style="color:${d.color}">Complete the reading response before Friday.</p><span class="verdict ${pass ? "pass" : "fail"}">${pass ? ICON.check : ICON.x}${pass ? "Passes" : "Fails"} the 4.5:1 minimum for body text</span></div></div>`;
+    },
+    toggle(v, el) {
+      const d = demoState.design ||= { gray: false, labels: false, color: "#EBA904" };
+      if (v === "gray") d.gray = !d.gray; else if (v === "labels") d.labels = !d.labels; else if (v === "color") d.color = el.value;
+      return v === "color" ? `Contrast ${contrast(d.color, "#FFFFFF").toFixed(1)} to 1.` : "Preview updated.";
+    }
+  },
+  pdf: {
+    html() {
+      const d = demoState.pdf || { digital: false, read: false };
+      const out = !d.read ? `<p class="muted" style="color:#9fb3a7">Select “Read this page” to start.</p>` : d.digital
+        ? `<p class="say">“Heading level 1: Motivation in Online Learning. Learners who can navigate course materials quickly report higher persistence…”</p><p class="ok">Real text: readable, searchable and resizable.</p>`
+        : `<p class="say">“Image.”</p><p class="empty">No readable text on this page.</p><p class="meh">Search, highlighting and text-to-speech find nothing.</p>`;
+      return intro("Ask a screen reader to read the page. Then swap in a digital copy and try again.") +
+      `<div class="demo"><div>${scanMock(d.digital)}</div>${consoleBox("Screen reader · Reading the page", out, "pcon")}</div>
+      <div class="toolbar"><button type="button" class="btn primary" data-demo="pdf" data-v="read">Read this page</button><button type="button" class="btn" data-demo="pdf" data-v="swap" aria-pressed="${d.digital}">${d.digital ? "Using the digital copy" : "Swap in the digital copy"}</button></div>`;
+    },
+    toggle(v) {
+      const d = demoState.pdf ||= { digital: false, read: false };
+      if (v === "read") d.read = true; else { d.digital = !d.digital; d.read = false; }
+      return v === "read" ? (d.digital ? "The screen reader reads the article text." : "The screen reader finds only an image.") : (d.digital ? "Digital copy loaded." : "Scanned copy loaded.");
+    }
+  },
+  slides: {
+    html() {
+      const on = !!demoState.slides;
+      const order = on ? ["Title: Photosynthesis: Light Reactions", "List, 3 items: Light hits chlorophyll…", "Graphic: Diagram of sunlight striking a chloroplast", "BIO 101 · Week 5"] : ["BIO 101 · Week 5", "Graphic: Picture 3", "List, 3 items: Light hits chlorophyll…", "Photosynthesis: Light Reactions (text box, not a title)"];
+      return intro("The numbered badges show the order a screen reader reads this slide. Fix it the way you would in the Reading Order pane.") +
+      `<div class="demo"><div>${slideMock(on, true)}</div>${consoleBox("Screen reader · Slide 12", `<ol>${order.map(t => `<li class="say">${t}</li>`).join("")}</ol><p class="${on ? "ok" : "meh"}" style="margin-top:10px">${on ? "Title first, then content, then footer." : "The footer comes first and the slide has no real title."}</p>`, "scon")}</div>
+      <div class="toolbar"><button type="button" class="btn ${on ? "" : "primary"}" data-demo="slides" aria-pressed="${on}">${on ? "Reading order fixed" : "Fix the reading order"}</button></div>`;
+    },
+    toggle() { demoState.slides = !demoState.slides; return demoState.slides ? "Reading order fixed. Title is read first." : "Reading order reset."; }
+  },
+  keyboard: {
+    html() {
+      const d = demoState.keyboard || { acc: false, placed: {}, result: "" };
+      const T = ["Heading", "Alt text", "Caption"], D = ["Lets students jump between sections", "Text alternative for an image", "Text version of the audio in a video"];
+      const body = d.acc
+        ? `<div class="match-a">${D.map((t, i) => `<div><label for="m${i}">${t}</label><select id="m${i}"><option value="">Choose a term</option>${T.map(x => `<option ${d.placed[i] === x ? "selected" : ""}>${x}</option>`).join("")}</select></div>`).join("")}<div><button type="button" class="btn primary small" data-demo="keyboard" data-v="check">Check matches</button></div></div>`
+        : `<div class="match"><div class="chips" aria-hidden="true">${T.map(t => `<div class="chip" draggable="true" data-term="${t}">${t}</div>`).join("")}</div><div class="chips">${D.map((t, i) => `<div class="drop" data-slot="${i}">${t}${d.placed[i] ? `<br><span class="placed">${d.placed[i]}</span>` : ""}</div>`).join("")}</div></div>`;
+      return intro(d.acc ? "Same activity, built with standard form controls. It works with Tab, the arrow keys and Enter, on phones and with screen readers." : "Try to finish this matching activity using only your keyboard. Press Tab: you can’t pick up the terms. This version only works with a mouse, and it’s here on purpose to show the barrier.") +
+      `<div style="margin-top:18px" class="paper">${body}</div><p style="margin-top:12px;font-weight:700">${esc(d.result)}</p>
+      <div class="toolbar"><button type="button" class="btn ${d.acc ? "" : "primary"}" data-demo="keyboard" data-v="swap" aria-pressed="${d.acc}">${d.acc ? "Showing the accessible version" : "Switch to the accessible version"}</button></div>`;
+    },
+    toggle(v) {
+      const d = demoState.keyboard ||= { acc: false, placed: {}, result: "" };
+      if (v === "swap") { d.acc = !d.acc; d.placed = {}; d.result = ""; return d.acc ? "Accessible version shown." : "Mouse-only version shown."; }
+      if (v === "check") {
+        const want = ["Heading", "Alt text", "Caption"]; let ok = 0;
+        want.forEach((w, i) => { d.placed[i] = $("m" + i).value; if (d.placed[i] === w) ok++; });
+        d.result = ok === 3 ? "All three matched, no mouse needed." : `${ok} of 3 matched. Try again.`;
+        return d.result;
+      }
+    }
+  }
+};
+function contrast(a, b) {
+  const lum = h => { const c = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255).map(x => x <= .03928 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; };
+  const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + .05) / (y + .05);
+}
+function bindDnD() {
+  document.querySelectorAll(".chip[draggable]").forEach(ch => ch.addEventListener("dragstart", e => e.dataTransfer.setData("text/plain", ch.dataset.term)));
+  document.querySelectorAll(".drop").forEach(dz => {
+    dz.addEventListener("dragover", e => { e.preventDefault(); dz.classList.add("over"); });
+    dz.addEventListener("dragleave", () => dz.classList.remove("over"));
+    dz.addEventListener("drop", e => {
+      e.preventDefault(); const d = demoState.keyboard ||= { acc: false, placed: {}, result: "" };
+      d.placed[dz.dataset.slot] = e.dataTransfer.getData("text/plain");
+      const ok = ["Heading", "Alt text", "Caption"].every((w, i) => d.placed[i] === w);
+      d.result = Object.keys(d.placed).length === 3 ? (ok ? "Matched, but only with a mouse." : "Not quite. Try again, or switch to the accessible version.") : "";
+      redrawDemo();
+    });
+  });
+}
+function redrawDemo(focusSel) {
+  const r = state.route; if (r.v !== "ch" || r.s !== 2) return;
+  const body = document.querySelector("#view .card-body");
+  const nav = body.querySelector(".actions").outerHTML;
+  body.innerHTML = DEMOS[CH[r.c].key].html() + nav;
+  bindDnD();
+  if (focusSel) { const el = body.querySelector(focusSel); if (el) el.focus(); }
+}
+
+/* ---------- Results, plan, finish ---------- */
+function vResults() {
+  const p = pct();
+  const band = p >= 90 ? ["Momentum mastered", "You spotted the key barriers in these scenarios. Bring the same eye to your own course."] : p >= 80 ? ["Strong momentum", "You made many effective decisions. Revisit the explanations for the challenges below 100% to sharpen your practice."] : p >= 70 ? ["Building momentum", "You’re developing practical skills. Review the challenges below 100%, then try one improvement."] : ["Keep building momentum", "Use the explanations and resources to build your practice. Start with one manageable change."];
+  const R = 84, L = 2 * Math.PI * R;
+  const weak = CH.filter((_, i) => pts(i) < 20).map(c => c.short);
+  return `<div class="card-body"><p class="eyebrow">Your results</p>
+    <div class="results-top"><div class="big-ring"><svg viewBox="0 0 200 200" aria-hidden="true"><circle class="bg" cx="100" cy="100" r="${R}"/><circle class="fg" cx="100" cy="100" r="${R}" stroke-dasharray="${L}" stroke-dashoffset="${L * (1 - p / 100)}"/></svg><div class="val" aria-hidden="true"><div>${p}%<small>${score()} of ${TOTAL}</small></div></div></div>
+    <div><h1 id="title" tabindex="-1">${band[0]}</h1><p class="sr-only">Your score: ${p} percent, ${score()} of ${TOTAL} knowledge points.</p><p class="lead">${band[1]}</p>${miniBadges()}</div></div>
+    <table class="bars"><caption>First answers by challenge</caption><thead><tr><th scope="col">Challenge</th><th scope="col">Score</th></tr></thead><tbody>
+    ${CH.map((c, i) => { const v = pts(i) * 5; return `<tr><th scope="row">${esc(c.title)}</th><td><div class="barcell"><span class="track" aria-hidden="true"><span class="fill ${v === 100 ? "" : v === 50 ? "mid" : "low"}" style="width:${Math.max(v, 3)}%"></span></span><span class="v">${pts(i)} / 20</span></div></td></tr>`; }).join("")}
+    </tbody></table>
+    <p style="margin-top:18px">${weak.length ? `<strong>Worth a second look:</strong> ${esc(weak.join(", "))}.` : "Perfect run. Keep applying these skills to new materials."}</p>
+    <div class="actions">${btn("Trail map", "map", "ghost")}<span class="spacer"></span>${btn("Turn momentum into action", "plan", "primary", ICON.arrow)}</div></div>`;
+}
+const PRESETS = ["Fix heading structure in my syllabus", "Review image descriptions in one module", "Rename unclear links on my course pages", "Correct captions on my most-used video", "Add text labels where I use color for meaning", "Replace a scanned PDF with a digital copy", "Run the Accessibility Checker on my slides", "Test one course activity with the keyboard only", "Review the Ally indicators in one course", "Write my own action"];
+function vPlan() {
+  return `<div class="card-body"><p class="eyebrow">Your action plan</p><h1 id="title" tabindex="-1">Turn momentum into action</h1>
+  <p class="lead">You don’t have to fix everything today. Choose one change for one course. Please don’t enter student information.</p>
+  <form id="planForm" novalidate>
+    <fieldset class="presets"><legend>Start with a suggestion (optional)</legend>${PRESETS.map((t, i) => `<label><input type="radio" name="preset" value="${i}"><span>${t}</span></label>`).join("")}</fieldset>
+    <label class="field" for="commitment">My Mustang Momentum commitment</label>
+    <textarea id="commitment" maxlength="500" aria-describedby="counter cerr" required>${esc(state.commitment)}</textarea>
+    <p id="counter" class="small muted">${state.commitment.length} of 500 characters</p>
+    <p class="error" id="cerr" hidden></p>
+    <label class="field" for="material">Course or material to improve (optional)</label>
+    <input type="text" id="material" maxlength="200" value="${esc(state.material)}">
+    <label class="field" for="tdate">Target date (optional)</label>
+    <input type="date" id="tdate" value="${esc(state.date)}" style="max-width:260px">
+    <div class="actions">${btn("Back to results", "results", "ghost back", ICON.back)}<span class="spacer"></span><button type="submit" class="btn primary"><span>Make my commitment</span>${ICON.arrow}</button></div>
+  </form></div>`;
+}
+function fmtDate(s) { if (!s) return "Not specified"; const d = new Date(s + "T12:00:00"); return isNaN(d) ? s : d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" }); }
+function vMyPlan() {
+  return `<div class="card-body"><p class="eyebrow no-print">Your action plan</p><h1 id="title" tabindex="-1" class="no-print">Momentum starts with one change</h1>
+  <p class="lead no-print">Print it, pin it, or paste it into your calendar.</p>
+  <section class="plan" aria-labelledby="planTitle">
+    <div class="plan-logos"><img class="m" src="assets/mercer-logo.png" alt="Mercer County Community College" width="700" height="132"><img class="o" src="assets/merceronline-logo.png" alt="MercerOnline" width="560" height="363"></div>
+    <h2 id="planTitle" class="eyebrow" style="font-size:14px">My Mustang Momentum commitment</h2>
+    <p class="commit" id="commitText">${esc(state.commitment)}</p>
+    <dl><dt>Course or material</dt><dd>${esc(state.material || "Not specified")}</dd><dt>Target date</dt><dd>${esc(fmtDate(state.date))}</dd><dt>Score</dt><dd>${pct()}% · ${state.complete.length} of ${CH.length} badges</dd></dl>
+    <p class="small muted" style="margin-top:16px">A personal action plan, not a certification of accessibility compliance.</p>
+    <img class="plan-mav" src="${MAV}" alt="">
+  </section>
+  <p id="copyMsg" role="status" class="small" style="margin-top:12px"></p>
+  <div class="actions">${btn("Edit", "plan", "ghost")}${act("Print", "print", "", ICON.print)}${act("Copy commitment", "copy", "", ICON.copy)}<span class="spacer"></span>${btn("Finish", "finish", "primary", ICON.arrow)}</div></div>`;
+}
+function vFinish() {
+  return `<section class="finale on-dark"><p class="eyebrow">Accessibility for all</p><h1 id="title" tabindex="-1">Keep the momentum going</h1>
+  <p class="lead">Accessibility is part of how we design learning from the beginning. One barrier, one course, one change at a time.</p>
+  <p><strong>MercerOnline</strong> · Building a culture of inclusive learning. Above All Else.</p>
+  <div class="actions">${btn("Trail map", "map")}${act("Accessibility resources", "resources")}${btn("View my action plan", "myplan", "gold")}</div>
+  <img class="mav" src="${MAV}" alt="Maverick the Mustang, cheering you on" width="220" height="220"></section>`;
+}
+
+/* ---------- Render ---------- */
+function render(opts = {}) {
+  const r = state.route;
+  renderTrail();
+  const T = { welcome: "Welcome", map: "Trail map", results: "Results", plan: "Action plan", myplan: "My action plan", finish: "Keep the momentum going" };
+  document.title = `${r.v === "ch" ? CH[r.c].title : T[r.v]} | Mustang Momentum`;
+  const view = $("view");
+  view.innerHTML = r.v === "welcome" ? vWelcome() : r.v === "map" ? vMap() : r.v === "ch" ? vChallenge(r.c, r.s) : r.v === "results" ? vResults() : r.v === "plan" ? vPlan() : r.v === "myplan" ? vMyPlan() : vFinish();
+  if (r.v === "ch" && r.s === 2) bindDnD();
+  if (opts.celebrate) confetti();
+}
+function confetti() {
+  const box = $("confetti"); if (!box || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const C = ["#EBA904", "#056331", "#f6c94c", "#153029", "#9fd2a6"];
+  box.innerHTML = Array.from({ length: 36 }, (_, i) => `<i style="left:${Math.random() * 100}%;background:${C[i % 5]};animation-delay:${Math.random() * .6}s;transform:rotate(${Math.random() * 180}deg)"></i>`).join("");
+}
+
+/* ---------- Events ---------- */
+document.addEventListener("click", async e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.nav) return go(parseNav(b.dataset.nav));
+  if (b.dataset.challenge) return startChallenge(+b.dataset.challenge);
+  if (b.dataset.close) return toggle(b.dataset.close, false);
+  if (b.dataset.jump) { const t = $(b.dataset.jump); t.classList.remove("hl"); void t.offsetWidth; t.classList.add("hl"); t.focus(); return; }
+  if (b.dataset.demo) {
+    const msg = DEMOS[b.dataset.demo].toggle(b.dataset.v, b);
+    const sel = b.dataset.v !== undefined ? `[data-demo="${b.dataset.demo}"][data-v="${b.dataset.v}"]` : `[data-demo="${b.dataset.demo}"]`;
+    redrawDemo(sel);
+    if (b.dataset.v === "fix") document.querySelector('.capline[data-v="1"]')?.focus();
+    if (msg) announce(msg);
+    return;
+  }
+  const a = b.dataset.action;
+  if (a === "resume") go(resumeRoute.v === "welcome" ? { v: "map" } : resumeRoute);
+  if (a === "resources") toggle("resources", true);
+  if (a === "print") window.print();
+  if (a === "copy") {
+    const text = `My Mustang Momentum commitment: ${state.commitment}\nCourse or material: ${state.material || "Not specified"}\nTarget date: ${fmtDate(state.date)}`;
+    try { await navigator.clipboard.writeText(text); $("copyMsg").textContent = "Copied to your clipboard."; }
+    catch (err) { $("copyMsg").textContent = "Copy isn’t available here. The commitment text is selected so you can copy it."; const rg = document.createRange(); rg.selectNodeContents($("commitText")); const s = getSelection(); s.removeAllRanges(); s.addRange(rg); }
+  }
+  if (a === "cancelReset") { render(); $("title")?.focus(); }
+  if (a === "confirmReset") { state = fresh(); hadSaved = false; Object.keys(demoState).forEach(k => delete demoState[k]); persist(); go({ v: "welcome" }, { say: "A new attempt has started." }); }
+});
+document.addEventListener("change", e => {
+  const el = e.target;
+  if (el.dataset && el.dataset.demo === "design") { DEMOS.design.toggle("color", el); redrawDemo(`input[name="sw"][value="${el.value}"]`); announce(`Contrast ${contrast(el.value, "#FFFFFF").toFixed(1)} to 1.`); }
+  if (el.name === "preset") { const i = +el.value; $("commitment").value = i === PRESETS.length - 1 ? "" : PRESETS[i] + "."; saveDraft(); $("commitment").focus(); }
+});
+document.addEventListener("input", e => { if (["commitment", "material", "tdate"].includes(e.target.id)) saveDraft(); });
+function saveDraft() { state.commitment = $("commitment").value; state.material = $("material").value; state.date = $("tdate").value; $("counter").textContent = `${state.commitment.length} of 500 characters`; persist(); }
+document.addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target;
+  if (f.id === "qform") {
+    const id = f.dataset.q; if (state.answers[id] !== undefined) return;
+    const ch = f.querySelector("input[name=ans]:checked");
+    if (!ch) { const er = $("qerr"); er.hidden = false; er.textContent = "Choose an answer first."; f.querySelector("input").focus(); announce("Choose an answer first."); return; }
+    state.answers[id] = +ch.value; persist(); render();
+    const ok = state.answers[id] === QMAP[id].q.key;
+    $("fbTitle")?.focus();
+    announce(ok ? "Right on track. Plus 10 points." : "Not quite. Read the explanation.");
+  }
+  if (f.id === "pform") {
+    state.practice = [...f.querySelectorAll("input[name=p]:checked")].map(x => +x.value); state.practiceChecked = true; persist();
+    $("pfb").innerHTML = practiceFeedback(CH[state.route.c]); $("pfbTitle").focus();
+  }
+  if (f.id === "planForm") {
+    saveDraft();
+    if (!state.commitment.trim()) { const er = $("cerr"); er.hidden = false; er.textContent = "Write one action you’ll take, or choose a suggestion above."; $("commitment").setAttribute("aria-invalid", "true"); $("commitment").focus(); return; }
+    state.commitment = state.commitment.trim(); go({ v: "myplan" }, { say: "Your action plan is saved." });
+  }
+});
+function toggle(id, force) {
+  const el = $(id), t = $(id + "Toggle"), show = force === undefined ? el.hidden : force;
+  el.hidden = !show; t.setAttribute("aria-expanded", String(show));
+  if (show) el.focus(); else t.focus();
+}
+$("helpToggle").onclick = () => toggle("help");
+$("resourcesToggle").onclick = () => toggle("resources");
+$("navMap").onclick = () => go({ v: "map" });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { if (!$("help").hidden) toggle("help", false); else if (!$("resources").hidden) toggle("resources", false); } });
+$("reset").onclick = () => {
+  $("trailbar").hidden = true;
+  $("view").innerHTML = `<div class="card-body"><p class="eyebrow">New attempt</p><h1 id="title" tabindex="-1">Start a new attempt?</h1><p class="lead">This clears your answers, badges and action plan for Mustang Momentum in this browser.</p><div class="actions">${act("Keep my progress", "cancelReset", "")}${act("Start over", "confirmReset", "primary")}</div></div>`;
+  window.scrollTo(0, 0); $("title").focus();
+};
+if (CONFIG.supportUrl) $("supportLine").innerHTML = `For Mercer-specific guidance, visit <a href="${esc(CONFIG.supportUrl)}">${esc(CONFIG.supportLabel)}</a>.`;
+
+/* Start: returning visitors land on the welcome screen with a Resume option */
+if (state.route.v === "results" && state.complete.length < CH.length) state.route = { v: "map" };
+const resumeRoute = state.route;
+state.route = { v: "welcome" };
+render();
+</script>
+</body>
+</html>
