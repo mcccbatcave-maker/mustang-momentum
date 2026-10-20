@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-labelledby="mavTitle">
+  <title id="mavTitle">Maverick the Mustang</title>
+  <!-- Original illustration of Maverick for Mustang Momentum. Replace this file with official mascot art if available. -->
+  <!-- mane, back layer -->
+  <path d="M96 30 C70 40 52 66 44 100 C38 128 38 168 44 214 L66 214 C60 176 62 128 78 92 Z" fill="#c98f00"/>
+  <!-- neck + head -->
+  <path d="M58 214 C52 168 58 122 78 88 L90 58 L90 12 L114 50 C132 54 152 72 166 98 C176 116 188 132 186 148 C184 162 170 168 156 164 C146 161 138 156 131 149 C122 160 118 184 122 214 Z" fill="#056331"/>
+  <!-- ear inner -->
+  <path d="M93 26 L96 54 L106 52 Z" fill="#0b4a26"/>
+  <!-- blaze -->
+  <path d="M134 64 C148 76 160 96 168 118 C172 130 176 140 174 148 C170 144 164 134 160 124 C152 104 144 84 134 64 Z" fill="#f5f4ee"/>
+  <path d="M112 118 C120 138 134 150 148 152" fill="none" stroke="#0b4a26" stroke-width="4" stroke-linecap="round"/>
+  <!-- muzzle shade -->
+  <path d="M148 150 C156 160 172 162 180 154 C184 150 186 146 186 142 C178 150 160 154 148 150 Z" fill="#0b4a26"/>
+  <!-- nostril -->
+  <ellipse cx="174" cy="138" rx="4.5" ry="3" transform="rotate(-30 174 138)" fill="#153029"/>
+  <!-- smile -->
+  <path d="M150 156 C158 160 166 160 172 157" fill="none" stroke="#153029" stroke-width="3" stroke-linecap="round"/>
+  <!-- eye -->
+  <ellipse cx="128" cy="92" rx="8" ry="9" fill="#ffffff"/>
+  <circle cx="130" cy="93" r="5.5" fill="#153029"/>
+  <circle cx="132" cy="91" r="1.8" fill="#ffffff"/>
+  <path d="M117 82 C122 76 132 75 138 80" fill="none" stroke="#153029" stroke-width="3" stroke-linecap="round"/>
+  <!-- forelock + mane, front layer -->
+  <path d="M100 28 C112 34 120 46 118 62 C112 54 104 50 96 50 C104 46 104 38 100 28 Z" fill="#EBA904"/>
+  <path d="M92 50 C76 62 66 80 62 100 C70 92 76 90 80 92 C70 108 66 124 66 140 C74 130 80 128 84 130 C76 148 74 166 76 184 C70 160 62 120 72 88 C78 70 86 58 92 50 Z" fill="#EBA904"/>
+  <!-- bandana -->
+  <path d="M60 176 C84 186 110 186 126 176 L124 196 C106 204 82 204 62 196 Z" fill="#EBA904"/>
+  <path d="M84 196 L96 214 L106 196 Z" fill="#c98f00"/>
+</svg>
